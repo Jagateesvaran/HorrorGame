@@ -15,9 +15,9 @@ public class Demo1 : MonoBehaviour
 	float m_ScanDistance;
 	bool m_Scanning;
 
-	//[Header("Object Halo")]
-	//public Renderer m_RdTerrain;
-	//public Transform m_TransObject;
+	[Header("Object Halo")]
+	public Renderer m_RdTerrain;
+	public Transform m_TransObject;
 
 	void Update ()
 	{
@@ -32,15 +32,21 @@ public class Demo1 : MonoBehaviour
 				m_Scanning = true;
 				m_ScanDistance = 0f;
 				m_Scanner.m_Origin = hit.point;
-			}
-		}
-		m_Scanner.SetScanDistance (m_ScanDistance);
-		m_Scanner.m_Material.SetFloat ("_ScanWidth", m_ScanWidth);
-		m_Scanner.m_Material.SetColor ("_LeadColor", m_Leading);
-		m_Scanner.m_Material.SetColor ("_MidColor", m_Middle);
-		m_Scanner.m_Material.SetColor ("_TrailColor", m_Trail);
-		m_Scanner.m_Material.SetColor ("_HBarColor", m_HorizontalBar);
 
-		//m_RdTerrain.material.SetVector ("_Center", m_TransObject.position);
+			
+			}
+
+			
+		}
+
+		m_Scanner.SetScanDistance(m_ScanDistance);
+		m_Scanner.m_Material.SetFloat("_ScanWidth", m_ScanWidth);
+		m_Scanner.m_Material.SetColor("_LeadColor", m_Leading);
+		m_Scanner.m_Material.SetColor("_MidColor", m_Middle);
+		m_Scanner.m_Material.SetColor("_TrailColor", m_Trail);
+		m_Scanner.m_Material.SetColor("_HBarColor", m_HorizontalBar);
+
+		m_RdTerrain.material.SetVector("_Center", m_TransObject.position);
+
 	}
 }
