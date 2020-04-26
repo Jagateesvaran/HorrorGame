@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Demo2 : MonoBehaviour
 {
@@ -8,14 +9,16 @@ public class Demo2 : MonoBehaviour
 	public ScanMode m_ScanMode = ScanMode.SCAN_DIR;
 	public GameObject m_Emitter;
 	public Vector4 m_Dir = new Vector4(1, 0, 0, 0);
-	[Range(0.1f, 2f)] public float m_Amplitude = 1f;
-	[Range(1f, 16f)] public float m_Exp = 3f;
-	[Range(8f, 64f)] public float m_Interval = 20f;
-	[Range(1f, 32f)] public float m_Speed = 10f;
+	[Range(0f, 2f)] public float m_Amplitude = 0f;
+	[Range(0f, 16f)] public float m_Exp = 3f;
+	[Range(0f, 64f)] public float m_Interval = 20f;
+	[Range(0f, 32f)] public float m_Speed = 10f;
 	public float m_Range = 10.0f;
 	[Header("Internal")]
 	public Scanner.ScannerObject[] m_Fxs;
 
+	public MicControl mic;
+	float currCountdownValue;
 
 	void Start()
 	{
@@ -24,13 +27,26 @@ public class Demo2 : MonoBehaviour
 			m_Fxs[i].Initialize();
 
 		m_FxType = Scanner.ScannerObject.FxType.FT_TransparencyAdd;
+
+		m_Amplitude = 1;
+		m_Range = 5.0f;
+
 	}
 	void Update()
 	{
 
-		
+
 		for (int i = 0; i < m_Fxs.Length; i++)
 		{
+			if (mic.loudness >= 10)
+			{
+				StartCoroutine(StartCountdown());
+			}
+			else if (mic.loudness <= 0.1)
+			{
+				m_Amplitude = 0;
+				m_Range = 0f;
+			}
 			
 			m_Fxs[i].ApplyFx(m_FxType);
 			m_Fxs[i].UpdateSelfParameters();
@@ -53,6 +69,22 @@ public class Demo2 : MonoBehaviour
 
 		}
 	}
+
+	public IEnumerator StartCountdown(float countdownValue = 20)
+	{
+		m_Amplitude = 2;
+		m_Range = 20.0f;
+
+		currCountdownValue = countdownValue;
+		while (currCountdownValue > 0)
+		{
+			Debug.Log("Countdown: " + currCountdownValue);
+			yield return new WaitForSeconds(1.0f);
+			currCountdownValue--;
+		}
+	}
+
+
 }
 
 // Credit to Elson : for _LightSweepRange
