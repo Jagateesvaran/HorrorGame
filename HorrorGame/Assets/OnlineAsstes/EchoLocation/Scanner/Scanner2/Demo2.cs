@@ -33,18 +33,25 @@ public class Demo2 : MonoBehaviour
 	}
 	void Update()
 	{
-		if (mic.loudness >= 7.0f) // whisper
-		{
-			Debug.Log("Shouting");
-			m_Amplitude =2;
-			m_Range = 10.0f;
-		}
-		else if (mic.loudness < 2.0f && mic.loudness > 1.4f)
-		{
-			Debug.Log("Whispering");
-			m_Amplitude = 1;
-			m_Range = 5.0f;
-		}
+
+		//Debug.Log((MicInput.MicLoudness * 10000 ).ToString());
+
+		
+		Debug.Log(MicInput.MicLoudness.ToString());
+
+		
+		//if (temp >= 400.0f) // whisper
+		//{
+		//	Debug.Log("Shouting" + temp.ToString());
+		//	m_Amplitude = 2;
+		//	m_Range = 20.0f;
+		//}
+		//else if (temp >= 1.0f && temp <= 200.0f)
+		//{
+		//	Debug.Log("Whispering");
+		//	m_Amplitude = 1;
+		//	m_Range = 5.0f;
+		//}
 
 		for (int i = 0; i < m_Fxs.Length; i++)
 		{
