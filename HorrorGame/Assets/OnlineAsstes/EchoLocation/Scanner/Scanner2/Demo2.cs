@@ -18,7 +18,6 @@ public class Demo2 : MonoBehaviour
 	public Scanner.ScannerObject[] m_Fxs;
 
 	public MicControl mic;
-	float currCountdownValue;
 
 	void Start()
 	{
@@ -34,20 +33,21 @@ public class Demo2 : MonoBehaviour
 	}
 	void Update()
 	{
-
+		if (mic.loudness >= 7.0f) // whisper
+		{
+			Debug.Log("Shouting");
+			m_Amplitude =2;
+			m_Range = 10.0f;
+		}
+		else if (mic.loudness < 2.0f && mic.loudness > 1.4f)
+		{
+			Debug.Log("Whispering");
+			m_Amplitude = 1;
+			m_Range = 5.0f;
+		}
 
 		for (int i = 0; i < m_Fxs.Length; i++)
 		{
-			if (mic.loudness >= 10)
-			{
-				StartCoroutine(StartCountdown());
-			}
-			else if (mic.loudness <= 0.1)
-			{
-				m_Amplitude = 0;
-				m_Range = 0f;
-			}
-			
 			m_Fxs[i].ApplyFx(m_FxType);
 			m_Fxs[i].UpdateSelfParameters();
 			if (ScanMode.SCAN_DIR == m_ScanMode)
@@ -70,19 +70,7 @@ public class Demo2 : MonoBehaviour
 		}
 	}
 
-	public IEnumerator StartCountdown(float countdownValue = 20)
-	{
-		m_Amplitude = 2;
-		m_Range = 20.0f;
-
-		currCountdownValue = countdownValue;
-		while (currCountdownValue > 0)
-		{
-			Debug.Log("Countdown: " + currCountdownValue);
-			yield return new WaitForSeconds(1.0f);
-			currCountdownValue--;
-		}
-	}
+	
 
 
 }
