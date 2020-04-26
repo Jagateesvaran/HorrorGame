@@ -11,7 +11,8 @@
 		_LightSweepInterval ("Light Sweep Interval", Float) = 20
 		_LightSweepSpeed ("Light Sweep Speed", Float) = 10
 		_LightSweepColor ("Light Sweep Color", Color) = (1, 0, 0, 0)
-		_LightSweepAddColor ("Light Sweep Add Color", Color) = (0, 0, 0, 0)	
+		_LightSweepAddColor ("Light Sweep Add Color", Color) = (0, 0, 0, 0)
+		_LightSweepRange("Light Sweep Range", Float) = 100
 	}
 	SubShader {
 		Tags { "RenderType" = "Transparent" "Queue" = "Transparent" }

@@ -29,8 +29,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _LeadSharp: 10
-    - _ScanDistance: 107.98382
-    - _ScanWidth: 10
+    - _ScanDistance: 499.06348
+    - _ScanWidth: 13.2
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _HBarColor: {r: 0, g: 0.28627452, b: 0.27450982, a: 1}

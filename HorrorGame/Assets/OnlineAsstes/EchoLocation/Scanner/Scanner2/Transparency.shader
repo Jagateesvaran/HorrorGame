@@ -7,6 +7,7 @@
 		_LightSweepSpeed ("Light Sweep Speed", Float) = 10
 		_LightSweepColor ("Light Sweep Color", Color) = (1, 0, 0, 0)
 		_LightSweepAddColor ("Light Sweep Add Color", Color) = (0, 0, 0, 0)
+		_LightSweepRange("Light Sweep Range", Float) = 100
 		[Enum(UnityEngine.Rendering.BlendMode)] _BlendSrc ("Blend Source", Int) = 5
 		[Enum(UnityEngine.Rendering.BlendMode)] _BlendDst ("Blend Destination", Int) = 10
 	}

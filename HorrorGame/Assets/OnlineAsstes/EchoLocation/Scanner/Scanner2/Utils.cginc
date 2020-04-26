@@ -18,23 +18,30 @@ float _Metallic, _Glossiness;
 float4 _LightSweepVector, _LightSweepColor, _LightSweepAddColor, _Color;
 float  _LightSweepAmp, _LightSweepExp, _LightSweepInterval, _LightSweepSpeed;
 
-float4 LightSweepColor (in float4 v)
+float _LightSweepRange;
+
+float4 LightSweepColor(in float4 v)
 {
 #ifdef ALS_DIRECTIONAL
-	float w = dot(v, _LightSweepVector);
+    float w = dot(v, _LightSweepVector);
 #endif
 #ifdef ALS_SPHERICAL
-	float w = length(v - _LightSweepVector);
+    float w = length(v - _LightSweepVector);
 #endif
+    //w = min(w, 3.0f);
 
-	w -= _Time.y * _LightSweepSpeed;
-	w /= _LightSweepInterval;
-	w = w - floor(w);
+    /* Range Check */
+    if (w >= _LightSweepRange)
+        return float4(0, 0, 0, 0);
 
-	float p = _LightSweepExp;
-	w = (pow(w, p) + pow(1 - w, p * 4)) * 0.5;	
-	w *= _LightSweepAmp;
-	return _LightSweepColor * w + _LightSweepAddColor;
+    w -= _Time.y * _LightSweepSpeed;
+    w /= _LightSweepInterval;
+    w = w - floor(w);
+
+    float p = _LightSweepExp;
+    w = (pow(w, p) + pow(1 - w, p * 4)) * 0.5;
+    w *= _LightSweepAmp;
+    return _LightSweepColor * w + _LightSweepAddColor;
 }
 
 #endif

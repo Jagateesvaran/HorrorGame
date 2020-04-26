@@ -7,7 +7,7 @@ public class Demo1 : MonoBehaviour
 	public Camera m_Camera;
 	public Scanner.ScannerCameraEffect m_Scanner;
 	public float m_ScanVelocity = 50f;
-	[Range(1f, 20f)] public float m_ScanWidth = 10f;
+	[Range(1f, 20f)] public float m_ScanWidth = 1f;
 	public Color m_Leading;
 	public Color m_Middle;
 	public Color m_Trail;
@@ -30,7 +30,7 @@ public class Demo1 : MonoBehaviour
 			if (Physics.Raycast (ray, out hit))
 			{
 				m_Scanning = true;
-				m_ScanDistance = 0f;
+				m_ScanDistance = 5f;
 				m_Scanner.m_Origin = hit.point;
 
 			
