@@ -16,27 +16,22 @@ public class Demo2 : MonoBehaviour
 	[Header("Internal")]
 	public Scanner.ScannerObject[] m_Fxs;
 
+
 	void Start()
 	{
 		m_Fxs = GameObject.FindObjectsOfType<Scanner.ScannerObject>();
 		for (int i = 0; i < m_Fxs.Length; i++)
 			m_Fxs[i].Initialize();
+
+		m_FxType = Scanner.ScannerObject.FxType.FT_TransparencyAdd;
 	}
 	void Update()
 	{
 
-
+		
 		for (int i = 0; i < m_Fxs.Length; i++)
 		{
-			if (Input.GetMouseButtonDown(0))
-			{
-				m_FxType = Scanner.ScannerObject.FxType.FT_TransparencyTextured;
-			}
-			else if (Input.GetMouseButtonUp(0))
-			{
-				m_FxType = Scanner.ScannerObject.FxType.FT_None;
-			}
-
+			
 			m_Fxs[i].ApplyFx(m_FxType);
 			m_Fxs[i].UpdateSelfParameters();
 			if (ScanMode.SCAN_DIR == m_ScanMode)
@@ -49,6 +44,7 @@ public class Demo2 : MonoBehaviour
 				m_Fxs[i].ApplySphericalScan();
 				m_Fxs[i].SetMaterialsVector("_LightSweepVector", m_Emitter.GetComponent<Transform>().position);
 			}
+
 			m_Fxs[i].SetMaterialsFloat("_LightSweepAmp", m_Amplitude);
 			m_Fxs[i].SetMaterialsFloat("_LightSweepExp", m_Exp);
 			m_Fxs[i].SetMaterialsFloat("_LightSweepInterval", m_Interval);
