@@ -28,17 +28,31 @@ public class Demo2 : MonoBehaviour
 		m_FxType = Scanner.ScannerObject.FxType.FT_TransparencyAdd;
 
 		m_Amplitude = 1;
-		m_Range = 5.0f;
+		m_Range = 1.0f;
 
 	}
 	void Update()
 	{
 
-		//Debug.Log((MicInput.MicLoudness * 10000 ).ToString());
 
+		float temp = 1000 * MicInput.MicLoudness;
 		
-		Debug.Log(MicInput.MicLoudness.ToString());
 
+
+		//if (temp >= 1.0f  && temp <= 100.0f)
+		//{
+		//	Debug.Log(temp.ToString());
+		//	//m_Amplitude = 1;
+		//	//m_Range = 1.0f;
+		//}
+	    if (temp > 101.0f)
+		{
+			Debug.Log("Too loud");
+			//m_Amplitude = 2;
+			//m_Range = 10.0f;
+
+			StartCoroutine(ExampleCoroutine());
+		}
 		
 		//if (temp >= 400.0f) // whisper
 		//{
@@ -77,7 +91,26 @@ public class Demo2 : MonoBehaviour
 		}
 	}
 
-	
+
+	IEnumerator ExampleCoroutine()
+	{
+
+		m_Amplitude = 2;
+		m_Range = 10.0f;
+
+		//Print the time of when the function is first called.
+		Debug.Log("Started Coroutine at timestamp : " + Time.time);
+
+		//yield on a new YieldInstruction that waits for 5 seconds.
+		yield return new WaitForSeconds(5);
+
+		//After we have waited 5 seconds print the time again.
+		Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+
+		m_Amplitude = 1;
+		m_Range = 0f;
+	}
+
 
 
 }
