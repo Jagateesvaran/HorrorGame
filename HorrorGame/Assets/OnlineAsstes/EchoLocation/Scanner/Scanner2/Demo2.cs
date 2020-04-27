@@ -28,7 +28,7 @@ public class Demo2 : MonoBehaviour
 		m_FxType = Scanner.ScannerObject.FxType.FT_TransparencyAdd;
 
 		m_Amplitude = 1;
-		m_Range = 1.0f;
+		m_Range = 10.0f;
 
 	}
 	void Update()
@@ -45,7 +45,7 @@ public class Demo2 : MonoBehaviour
 		//	//m_Amplitude = 1;
 		//	//m_Range = 1.0f;
 		//}
-	    if (temp > 101.0f)
+	    if (temp > 90.0f)
 		{
 			Debug.Log("Too loud");
 			//m_Amplitude = 2;
@@ -96,7 +96,7 @@ public class Demo2 : MonoBehaviour
 	{
 
 		m_Amplitude = 2;
-		m_Range = 10.0f;
+		m_Range = 20.0f;
 
 		//Print the time of when the function is first called.
 		Debug.Log("Started Coroutine at timestamp : " + Time.time);
@@ -108,7 +108,8 @@ public class Demo2 : MonoBehaviour
 		Debug.Log("Finished Coroutine at timestamp : " + Time.time);
 
 		m_Amplitude = 1;
-		m_Range = 0f;
+		m_Range = 10.0f;
+
 	}
 
 
