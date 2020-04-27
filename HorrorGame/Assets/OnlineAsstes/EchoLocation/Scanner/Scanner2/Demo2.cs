@@ -17,7 +17,6 @@ public class Demo2 : MonoBehaviour
 	[Header("Internal")]
 	public Scanner.ScannerObject[] m_Fxs;
 
-	public MicControl mic;
 
 	void Start()
 	{
@@ -25,7 +24,7 @@ public class Demo2 : MonoBehaviour
 		for (int i = 0; i < m_Fxs.Length; i++)
 			m_Fxs[i].Initialize();
 
-		m_FxType = Scanner.ScannerObject.FxType.FT_TransparencyAdd;
+		m_FxType = Scanner.ScannerObject.FxType.FT_TransparencyTextured;
 
 		m_Amplitude = 1;
 		m_Range = 10.0f;
