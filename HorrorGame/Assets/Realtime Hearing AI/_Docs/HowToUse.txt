@@ -1,0 +1,39 @@
+//
+//
+//
+// Hey guys, I have made this as easy as I could possible have.
+// You have two options, both of which are as simple as clicking for the most part.
+//
+// I will also Include a video, the link is under this.
+// https://www.youtube.com/watch?v=B-Z0yqSbwF8
+//
+// Before I explain how to set up a player I want to go ahead and say
+// You don't have to change any settings on the player unless you want too.
+// Otherwise it is beautiful right out of the box!
+// The only reason you would need to change any settings is what kind of environment
+// Your level is. Otherwise, it's a good default set up.
+//
+// Now - how to set this up.
+//
+// First Option -
+// Go to Prefabs and drag and drop where you want the player at.
+// Replace the "Player" with your own, not Standard_Player or WebPlayer_Player-
+// but the one inside it called "Player" that is a child of both Standard and WebPlayer.
+// Keep the MicrophoneInput child, and put it as a child onto your next player model you decide to use.
+//
+// Second Option, set up your player the way you want now center your scene view onto your player model
+// by pressing F after selecting your player. Now create a sphere and make sure it is centered to your
+// player and INSIDE your players body so no accidents happen if you aren't making noise.
+// Now player either (Standard, or WebPlayerMic) onto the sphere and make the Sphere a child
+// of your player.
+
+
+
+// Every script is FULLY Commented so just reading the scripts can help you understand.
+//
+// WHICH EVER OBJECT THE MICROPHONE SCRTIPS ARE ON MUST HAVE AN AUDIOSOURCE!
+//
+// There are two version of the Microphone Script.
+//
+// Firt one is Standard (It is good for Standalone Games, and Mobile Devices)
+// Second one is for Web Player (It is their for legal requirements). due to Authorization.
