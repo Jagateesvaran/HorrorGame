@@ -132,7 +132,7 @@ public class WebPlayerMic : MonoBehaviour {
 						packagedData = transform.localScale.x; // ---------------- Again, a little more setting up the axis of sphere.
 						transform.localScale = new Vector3 (minValue, (packagedData * amp) + startPos.y, minValue); // ----- This is how we Multiply the sphere size based on Audio.
 						volumeinput = transform.localScale.y;
-						Debug.Log(transform.localScale.y.ToString());            
+						//Debug.Log(transform.localScale.y.ToString());            
 			//----------------------------------------------------------------------------------------------------------------
 			Debug.Log ("Microphone is now admiting sound into your game, you may delete this debug log in code if you no longer need it.");
 				}

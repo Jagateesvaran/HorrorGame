@@ -147,7 +147,7 @@ public class Demo2 : MonoBehaviour
 
 		m_FxType = Scanner.ScannerObject.FxType.FT_TransparencyTextured;
 
-		m_Range = 5;
+		m_Range = 10;
 
 
 
