@@ -64,10 +64,11 @@ public class WebPlayerMic : MonoBehaviour {
 	void InitializeFirstTimeMic(float left, float top, float width, float height, float buttonSpaceTop, float buttonSpaceLeft) {
 		micInputlist.Clear();
 
+
 		//if (Microphone.devices.Length > 1 && GuiSelectDevice == true || micSelected == false)//If there is more than one device, choose one.
 		//	for (int i = 0; i < Microphone.devices.Length; ++i)
 		//	{
-		
+
 		//		//if (GUI.Button(new Rect(left + ((width + buttonSpaceLeft) * i), top + ((height + buttonSpaceTop) * i), width, height), Microphone.devices[i].ToString()))
 		//		if (true)
 		//		{
