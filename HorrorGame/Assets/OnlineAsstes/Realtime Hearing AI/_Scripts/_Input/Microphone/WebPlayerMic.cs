@@ -47,7 +47,6 @@ public class WebPlayerMic : MonoBehaviour {
 
 		for (int i = 0; i < Microphone.devices.Length; i++)
 		{
-			Debug.Log(Microphone.devices[i].ToString());
 			micInputlist.Add(Microphone.devices[i].ToString());
 		}
 
@@ -65,34 +64,38 @@ public class WebPlayerMic : MonoBehaviour {
 	void InitializeFirstTimeMic(float left, float top, float width, float height, float buttonSpaceTop, float buttonSpaceLeft) {
 		micInputlist.Clear();
 
-		if (Microphone.devices.Length > 1 && GuiSelectDevice == true || micSelected == false)//If there is more than one device, choose one.
-			for (int i = 0; i < Microphone.devices.Length; ++i)
-			{
-				
+		//if (Microphone.devices.Length > 1 && GuiSelectDevice == true || micSelected == false)//If there is more than one device, choose one.
+		//	for (int i = 0; i < Microphone.devices.Length; ++i)
+		//	{
+		
+		//		//if (GUI.Button(new Rect(left + ((width + buttonSpaceLeft) * i), top + ((height + buttonSpaceTop) * i), width, height), Microphone.devices[i].ToString()))
+		//		if (true)
+		//		{
 
-				if (GUI.Button(new Rect(left + ((width + buttonSpaceLeft) * i), top + ((height + buttonSpaceTop) * i), width, height), Microphone.devices[i].ToString()))
-				{
+		//			if (PlayerMicInput == null)
+		//			{ // ----- If there is no Audio Source in the Player Mic Input, we need to add one.
+		//				Debug.LogWarning(" There is no Audio Source in the Player Mic Input, you should add one. Then I shall work :)");
+		//				return;
+		//			}
 
-					if (PlayerMicInput == null)
-					{ // ----- If there is no Audio Source in the Player Mic Input, we need to add one.
-						Debug.LogWarning(" There is no Audio Source in the Player Mic Input, you should add one. Then I shall work :)");
-						return;
-					}
+		//			StopMicrophone();
+		//			selectedDevice = Microphone.devices[i].ToString();
+		//			StartMicrophone();
+		//			micSelected = true;
 
-					StopMicrophone();
-					selectedDevice = Microphone.devices[i].ToString();
-					StartMicrophone();
-					micSelected = true;
-
-				}
-			}
+		//		}
+		//	}
 
 	}
 
 
 	public void DropDown_IndexChanged(int index)
 	{
-		selectedDevice = micInputlist[index];
+
+		StopMicrophone();
+		selectedDevice = Microphone.devices[index].ToString();
+		StartMicrophone();
+		micSelected = true;
 	}
 
 
