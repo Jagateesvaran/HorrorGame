@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
+using System.Collections.Generic;
 
 // Realtime Hearing AI -
 //
@@ -34,13 +36,25 @@ public class WebPlayerMic : MonoBehaviour {
 
 	//---------------------------------------------------------------------------------------------------------------------------------
 
+	public Dropdown dropdown;
+	List<string> micInputlist = new List<string>();
+	string seletedInput;
 
 
 
 
 	IEnumerator Start () {
-// We use this to allow the user to authenticate the Microphone usage, after it is authenticated, we call InitializeFirstTimeMic and make sure the scale of the sphere is correct.
-				yield return Application.RequestUserAuthorization (UserAuthorization.Microphone);
+
+		for (int i = 0; i < Microphone.devices.Length; i++)
+		{
+			Debug.Log(Microphone.devices[i].ToString());
+			micInputlist.Add(Microphone.devices[i].ToString());
+		}
+
+		dropdown.AddOptions(micInputlist);
+
+		// We use this to allow the user to authenticate the Microphone usage, after it is authenticated, we call InitializeFirstTimeMic and make sure the scale of the sphere is correct.
+		yield return Application.RequestUserAuthorization (UserAuthorization.Microphone);
 				if (Application.HasUserAuthorization (UserAuthorization.Microphone)) {
 				InitializeFirstTimeMic ((Screen.width/2)-150, (Screen.height/2)-75, 300, 100, 10, -300);
 				startPos = transform.localScale;
@@ -49,22 +63,38 @@ public class WebPlayerMic : MonoBehaviour {
 	// We use this to Initialize permission for the first time the Microphone is accessed by player.
 	// This is due to Web Player security, we must do this (Legally Speaking).
 	void InitializeFirstTimeMic(float left, float top, float width, float height, float buttonSpaceTop, float buttonSpaceLeft) {
-		
+		micInputlist.Clear();
+
 		if (Microphone.devices.Length > 1 && GuiSelectDevice == true || micSelected == false)//If there is more than one device, choose one.
 			for (int i = 0; i < Microphone.devices.Length; ++i)
-			if (GUI.Button(new Rect(left + ((width + buttonSpaceLeft) * i), top + ((height + buttonSpaceTop) * i), width, height), Microphone.devices[i].ToString())) {
+			{
 				
-				if (PlayerMicInput == null) { // ----- If there is no Audio Source in the Player Mic Input, we need to add one.
-					Debug.LogWarning (" There is no Audio Source in the Player Mic Input, you should add one. Then I shall work :)");
-					return;
+
+				if (GUI.Button(new Rect(left + ((width + buttonSpaceLeft) * i), top + ((height + buttonSpaceTop) * i), width, height), Microphone.devices[i].ToString()))
+				{
+
+					if (PlayerMicInput == null)
+					{ // ----- If there is no Audio Source in the Player Mic Input, we need to add one.
+						Debug.LogWarning(" There is no Audio Source in the Player Mic Input, you should add one. Then I shall work :)");
+						return;
+					}
+
+					StopMicrophone();
+					selectedDevice = Microphone.devices[i].ToString();
+					StartMicrophone();
+					micSelected = true;
+
 				}
-				
-				StopMicrophone();
-				selectedDevice = Microphone.devices[i].ToString();
-				StartMicrophone();
-				micSelected = true;
 			}
+
 	}
+
+
+	public void DropDown_IndexChanged(int index)
+	{
+		selectedDevice = micInputlist[index];
+	}
+
 
 
 	public void StartMicrophone () {
@@ -82,16 +112,7 @@ public class WebPlayerMic : MonoBehaviour {
 	}	
 	
 	void OnGUI() {
-		if (Input.GetKey("z"))
-		{
 			InitializeFirstTimeMic((Screen.width / 2) - 150, (Screen.height / 2) - 75, 300, 100, 10, -300);
-		}
-		else if(Input.GetKey("x"))
-		{
-			InitializeFirstTimeMic(0, 0, 0, 0, 0, 0);
-		}
-
-	
 		if (Microphone.IsRecording(selectedDevice)) {
 			ClearRamTimer += Time.deltaTime;
 			ClearRam();
@@ -104,7 +125,9 @@ public class WebPlayerMic : MonoBehaviour {
 			Logic();   // ------------ Logic deals with all the important stuff.
 		    ClearRam (); // ---------- This is where we clear the ram so the system doesn't overload memory past playablilty.
 
+
 		
+
 	}
 
 	// This is where we clear our memory at.
