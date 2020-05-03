@@ -18,13 +18,18 @@ public class DoorTrigger : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnAnimatorIK(int layerIndex)
+    {
+       
+    }
+
+    private void OnTriggerStay(Collider other)
     {
         if (Input.GetKey("e"))
         {
-            Debug.Log("asd");
             animation.Play("DoorOpening");
-
         }
     }
+
+   
 }

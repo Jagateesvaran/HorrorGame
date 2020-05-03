@@ -82,7 +82,16 @@ public class WebPlayerMic : MonoBehaviour {
 	}	
 	
 	void OnGUI() {
-		InitializeFirstTimeMic((Screen.width/2)-150, (Screen.height/2)-75, 300, 100, 10, -300);
+		if (Input.GetKey("z"))
+		{
+			InitializeFirstTimeMic((Screen.width / 2) - 150, (Screen.height / 2) - 75, 300, 100, 10, -300);
+		}
+		else if(Input.GetKey("x"))
+		{
+			InitializeFirstTimeMic(0, 0, 0, 0, 0, 0);
+		}
+
+	
 		if (Microphone.IsRecording(selectedDevice)) {
 			ClearRamTimer += Time.deltaTime;
 			ClearRam();
@@ -94,6 +103,8 @@ public class WebPlayerMic : MonoBehaviour {
 	void Update () {
 			Logic();   // ------------ Logic deals with all the important stuff.
 		    ClearRam (); // ---------- This is where we clear the ram so the system doesn't overload memory past playablilty.
+
+		
 	}
 
 	// This is where we clear our memory at.
