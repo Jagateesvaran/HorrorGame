@@ -39,6 +39,7 @@ public class WebPlayerMic : MonoBehaviour {
 	public Dropdown dropdown;
 	List<string> micInputlist = new List<string>();
 	string seletedInput;
+	string GobalInput;
 
 
 
@@ -92,18 +93,21 @@ public class WebPlayerMic : MonoBehaviour {
 
 	public void DropDown_IndexChanged(int index)
 	{
-
-		StopMicrophone();
-		selectedDevice = Microphone.devices[index].ToString();
-		StartMicrophone();
-		micSelected = true;
+		
+			StopMicrophone();
+			selectedDevice = Microphone.devices[index].ToString();
+			GobalInput = selectedDevice;
+			StartMicrophone();
+			micSelected = true;
+		
+		
 	}
 
 
 
 	public void StartMicrophone () {
 		WebPlayerTrue = true;
-		PlayerMicInput.clip = Microphone.Start(selectedDevice,true, 30, 44100);//Starts recording
+		PlayerMicInput.clip = Microphone.Start(GobalInput, true, 30, 44100);//Starts recording
 		//while (!(Microphone.GetPosition(selectedDevice) > 0)){} // Wait until the recording has started
 		PlayerMicInput.PlayDelayed (0.2f); // ---------- We purposely create a delay of 0.2 Seconds, if you don't the Microphone and Audio can't keep up and becomes glitchy!
 		PlayerMicInput.Play(); // Play the audio source!
@@ -112,12 +116,12 @@ public class WebPlayerMic : MonoBehaviour {
 	public void StopMicrophone () {
 		WebPlayerTrue = false;
 		PlayerMicInput.Stop();//Stops the audio
-		Microphone.End(selectedDevice);//Stops the recording of the device	
+		Microphone.End(GobalInput);//Stops the recording of the device	
 	}	
 	
 	void OnGUI() {
 			InitializeFirstTimeMic((Screen.width / 2) - 150, (Screen.height / 2) - 75, 300, 100, 10, -300);
-		if (Microphone.IsRecording(selectedDevice)) {
+		if (Microphone.IsRecording(GobalInput)) {
 			ClearRamTimer += Time.deltaTime;
 			ClearRam();
 		}
@@ -140,7 +144,7 @@ public class WebPlayerMic : MonoBehaviour {
 						ClearRamTimer -= Time.deltaTime;
 						if (ClearRamTimer <= 0) {
 								Microphone.End ("Built-in Microphone");
-								PlayerMicInput.clip = Microphone.Start ("Built-in Microphone", true, 30, 44100);
+								PlayerMicInput.clip = Microphone.Start (selectedDevice, true, 30, 44100);
 								PlayerMicInput.PlayDelayed (0.2f);
 								ClearRamTimer = 30;
 						}
