@@ -157,10 +157,10 @@ public class Demo2 : MonoBehaviour
 
 		//m_Range = mic.volumeinput + 10;
 
-		if (mic.volumeinput > 10)
-		{
-			StartCoroutine(ExampleCoroutine());
-		}
+		//if (mic.volumeinput > 10)
+		//{
+		//	StartCoroutine(ExampleCoroutine());
+		//}
 
 		for (int i = 0; i < m_Fxs.Length; i++)
 		{

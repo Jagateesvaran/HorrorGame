@@ -15,13 +15,22 @@
 		_LightSweepRange("Light Sweep Range", Float) = 100
 	}
 	SubShader {
-		Tags { "RenderType" = "Transparent" "Queue" = "Transparent" }
-		ZWrite Off
-		Blend SrcAlpha One
+
+		Tags { "RenderType" = "Transparent" "Queue" = "Transparent" "IgnoreProjector" = "True"}
+		//Tags { "RenderType" = "Transparent" "Queue" = "Transparent" }
+		//ZWrite Off
+		//Blend SrcAlpha One
+
+
+
+		ZWrite On
+		Blend SrcAlpha OneMinusSrcAlpha
+
 
 		CGPROGRAM
 		#pragma surface surf Standard keepalpha
 		#pragma multi_compile ALS_DIRECTIONAL ALS_SPHERICAL
+
 		#include "Utils.cginc"
 		void surf (Input IN, inout SurfaceOutputStandard o)
 		{
