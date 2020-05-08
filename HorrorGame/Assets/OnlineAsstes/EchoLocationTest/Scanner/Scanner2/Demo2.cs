@@ -164,6 +164,12 @@ public class Demo2 : MonoBehaviour
 
 		for (int i = 0; i < m_Fxs.Length; i++)
 		{
+
+			if (m_Fxs[i] == null)
+			{
+				i += 1;
+			}
+
 			m_Fxs[i].ApplyFx(m_FxType);
 			m_Fxs[i].UpdateSelfParameters();
 			if (ScanMode.SCAN_DIR == m_ScanMode)
