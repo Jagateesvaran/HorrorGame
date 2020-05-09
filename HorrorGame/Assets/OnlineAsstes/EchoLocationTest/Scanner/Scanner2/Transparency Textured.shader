@@ -16,15 +16,15 @@
 	}
 	SubShader {
 
-		Tags { "RenderType" = "Transparent" "Queue" = "Transparent" "IgnoreProjector" = "True"}
-		//Tags { "RenderType" = "Transparent" "Queue" = "Transparent" }
-		//ZWrite Off
-		//Blend SrcAlpha One
+		//Tags { "RenderType" = "Transparent" "Queue" = "Transparent" "IgnoreProjector" = "True"}
+		Tags { "RenderType" = "Transparent" "Queue" = "Transparent" }
+		ZWrite Off
+		Blend SrcAlpha One
 
 
 
-		ZWrite On
-		Blend SrcAlpha OneMinusSrcAlpha
+		/*ZWrite On
+		Blend SrcAlpha OneMinusSrcAlpha*/
 
 
 		CGPROGRAM

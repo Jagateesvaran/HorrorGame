@@ -133,7 +133,7 @@ public class Demo2 : MonoBehaviour
 	[Range(0f, 16f)] public float m_Exp = 3f;
 	[Range(0f, 64f)] public float m_Interval = 20f;
 	[Range(0f, 32f)] public float m_Speed = 10f;
-	public float m_Range = 10.0f;
+	public float m_Range = 30.0f;
 	[Header("Internal")]
 	public Scanner.ScannerObject[] m_Fxs;
 
@@ -147,7 +147,7 @@ public class Demo2 : MonoBehaviour
 
 		m_FxType = Scanner.ScannerObject.FxType.FT_TransparencyTextured;
 
-		m_Range = 15;
+		m_Range = 30;
 
 
 
@@ -201,7 +201,7 @@ public class Demo2 : MonoBehaviour
 		Debug.Log("Started Coroutine at timestamp : " + Time.time);
 
 		//yield on a new YieldInstruction that waits for 5 seconds.
-		yield return new WaitForSeconds(5);
+		yield return new WaitForSeconds(10);
 
 		//After we have waited 5 seconds print the time again.
 		Debug.Log("Finished Coroutine at timestamp : " + Time.time);
