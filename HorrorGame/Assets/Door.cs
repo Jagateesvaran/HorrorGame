@@ -8,21 +8,34 @@ public class Door : MonoBehaviour
 
     public GameObject UIInteractionCanvas;
     public Animation openDoorAnimation;
+    public AudioSource doorCreakSound;
 
+  
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
             UIInteractionCanvas.gameObject.SetActive(true);
-            Debug.Log("in Room Range");
-
 
             if (Input.GetKeyDown("e"))
             {
                 openDoorAnimation.Play();
+                doorCreakSound.Play();
+                gameObject.GetComponent<BoxCollider>().enabled = false;
+                UIInteractionCanvas.gameObject.SetActive(false);
             }
         }
     }
+
+
+    private void OnTriggerExit(Collider other)
+    {
+        UIInteractionCanvas.gameObject.SetActive(false);
+    }
+
+
+
+
 
 
 
