@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System.Collections.Generic;
+using Random = UnityEngine.Random;
 // In this basic AI Script, I will have the enemy chase you for 5 seconds.
 
 // Pretty much you are free to do ANY kind of AI you would like to use, just make sure
@@ -22,6 +23,21 @@ public class ComeTowardsSound : MonoBehaviour {
 	public float Speed; // ------------------- The speed at which the enemy will follow us (Change in Inspector).
 
 
+	public List<Transform> waypoints = new List<Transform>();
+	private Transform targetWaypoint;
+	private int targetWaypointIndex = 0;
+	private float minDistance = 0.2f;
+	private float lastWaypointIndex;
+
+	
+
+	private void Start()
+	{
+		playerHeard = false;
+		targetWaypoint = waypoints[targetWaypointIndex];
+	}
+
+
 	void Update(){
 		if (playerHeard) { // --------------------------------------------------- If the player is heard, do the following.
 			TimeToSearch -= Time.deltaTime;// ----------------------------------- Deduct time for finding player.
@@ -32,6 +48,33 @@ public class ComeTowardsSound : MonoBehaviour {
 				TimeToSearch = 5.0f; // Revert back to our 5 seconds for next time.
 			}
 		}
+		else if (!playerHeard)
+		{
+			float movementStep = Speed * Time.deltaTime;
+
+			float distance = Vector3.Distance(transform.position, targetWaypoint.position);
+			CheckDistanceToWaypoint(distance);
+
+
+			transform.position = Vector3.MoveTowards(transform.position, targetWaypoint.position, movementStep);
+		}
+	}
+
+
+
+	void CheckDistanceToWaypoint(float currentDistance)
+	{
+		if (currentDistance <= minDistance)
+		{
+			//targetWaypointIndex++;
+			UpdateTargetWaypoint();
+		}
+	}
+
+	void UpdateTargetWaypoint()
+	{
+
+		targetWaypoint = waypoints[Random.Range(0, 4)];
 	}
 
 	// The below code I will explain as it seems very simple, and it is! But I want to explain why I did it
