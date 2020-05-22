@@ -53,6 +53,12 @@ public class WebPlayerMic : MonoBehaviour {
 
 		dropdown.AddOptions(micInputlist);
 
+		StopMicrophone();
+		selectedDevice = Microphone.devices[0].ToString();
+		GobalInput = selectedDevice;
+		StartMicrophone();
+		micSelected = true;
+
 		// We use this to allow the user to authenticate the Microphone usage, after it is authenticated, we call InitializeFirstTimeMic and make sure the scale of the sphere is correct.
 		yield return Application.RequestUserAuthorization (UserAuthorization.Microphone);
 				if (Application.HasUserAuthorization (UserAuthorization.Microphone)) {
@@ -93,14 +99,11 @@ public class WebPlayerMic : MonoBehaviour {
 
 	public void DropDown_IndexChanged(int index)
 	{
-		
 			StopMicrophone();
 			selectedDevice = Microphone.devices[index].ToString();
 			GobalInput = selectedDevice;
 			StartMicrophone();
-			micSelected = true;
-		
-		
+			micSelected = true;		
 	}
 
 
