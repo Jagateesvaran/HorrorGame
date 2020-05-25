@@ -147,7 +147,7 @@ public class Demo2 : MonoBehaviour
 
 		m_FxType = Scanner.ScannerObject.FxType.FT_Additional;
 
-		m_Range = 30;
+		m_Range = 10;
 
 
 
