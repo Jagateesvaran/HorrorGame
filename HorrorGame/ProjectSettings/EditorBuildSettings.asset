@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/GameStuff/Game.unity
     guid: 548c41b57904eeb4fbcff55c7c2961dc
+  - enabled: 1
+    path: Assets/GameStuff/MainMeun/MainMeun.unity
+    guid: 1c18d835de43f5d44a81334f680ac8b5
   m_configObjects: {}
