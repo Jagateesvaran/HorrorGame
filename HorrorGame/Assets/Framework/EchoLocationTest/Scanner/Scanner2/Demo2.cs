@@ -36,20 +36,15 @@ public class Demo2 : MonoBehaviour
 	void Update()
 	{
 
-		Debug.Log(mic.volumeinput.ToString());
+		//Debug.Log(mic.volumeinput.ToString());
 
-		if (mic.volumeinput >= 22 && increase == false)
-		{
-			increase = true;
-			StartCoroutine(ExampleCoroutine());
-		}
-
-		//m_Range = mic.volumeinput + 10;
-
-		//if (mic.volumeinput > 10)
+		//if (mic.volumeinput >= 22 && increase == false)
 		//{
+		//	increase = true;
 		//	StartCoroutine(ExampleCoroutine());
 		//}
+
+		
 
 		for (int i = 0; i < m_Fxs.Length; i++)
 		{
