@@ -18,6 +18,7 @@ public class Demo2 : MonoBehaviour
 	public Scanner.ScannerObject[] m_Fxs;
 
 	public WebPlayerMic mic;
+	bool increase;
 
 	void Start()
 	{
@@ -27,13 +28,21 @@ public class Demo2 : MonoBehaviour
 
 		m_FxType = Scanner.ScannerObject.FxType.FT_Additional;
 
-		
 
 
+		increase = false;
 
 	}
 	void Update()
 	{
+
+		Debug.Log(mic.volumeinput.ToString());
+
+		if (mic.volumeinput >= 22 && increase == false)
+		{
+			increase = true;
+			StartCoroutine(ExampleCoroutine());
+		}
 
 		//m_Range = mic.volumeinput + 10;
 
@@ -72,6 +81,8 @@ public class Demo2 : MonoBehaviour
 		}
 	}
 
+
+
 	IEnumerator ExampleCoroutine()
 	{
 
@@ -81,12 +92,13 @@ public class Demo2 : MonoBehaviour
 		Debug.Log("Started Coroutine at timestamp : " + Time.time);
 
 		//yield on a new YieldInstruction that waits for 5 seconds.
-		yield return new WaitForSeconds(10);
+		yield return new WaitForSeconds(5);
 
 		//After we have waited 5 seconds print the time again.
 		Debug.Log("Finished Coroutine at timestamp : " + Time.time);
 
-		m_Range = 10.0f;
+		m_Range = 11.0f;
+		increase = false;
 
 	}
 

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1622020452322984295}
   - component: {fileID: 1622020452323951527}
   - component: {fileID: 831837972687340859}
+  - component: {fileID: 7060779714235051210}
   m_Layer: 0
   m_Name: Carpet 01
   m_TagString: Untagged
@@ -107,3 +108,17 @@ MonoBehaviour:
   m_BackupShaders: []
   m_TexDiffuse: []
   m_TexBump: []
+--- !u!64 &7060779714235051210
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622020452322024807}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 35d1d835dcd961c469b0df15f3982db0, type: 3}

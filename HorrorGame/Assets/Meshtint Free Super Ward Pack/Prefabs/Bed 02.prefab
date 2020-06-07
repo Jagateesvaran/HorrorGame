@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 899872154595977149}
   - component: {fileID: 899872154594846077}
   - component: {fileID: 3939974779767329484}
+  - component: {fileID: 6895950059600250752}
   m_Layer: 0
   m_Name: Bed 02
   m_TagString: Untagged
@@ -107,3 +108,17 @@ MonoBehaviour:
   m_BackupShaders: []
   m_TexDiffuse: []
   m_TexBump: []
+--- !u!64 &6895950059600250752
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899872154592918461}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: fc8ceff4f64847a459405695259a1517, type: 3}
