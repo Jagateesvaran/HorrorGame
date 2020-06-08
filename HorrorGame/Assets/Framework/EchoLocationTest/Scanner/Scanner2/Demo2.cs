@@ -39,7 +39,9 @@ public class Demo2 : MonoBehaviour
 
 	void Update()
 	{
-
+		m_Fxs = GameObject.FindObjectsOfType<Scanner.ScannerObject>();
+		for (int i = 0; i < m_Fxs.Length; i++)
+			m_Fxs[i].Initialize();
 
 		//&& increase == false
 		if (mic.volumeinput >= 10 && m_Range != 30 )
@@ -89,31 +91,30 @@ public class Demo2 : MonoBehaviour
 
 		b_reduceRange = true;
 
+		//m_Range = Mathf.Lerp(m_Range, 30, lerpTime * Time.deltaTime);
 		m_Range = Mathf.Lerp(m_Range, 30, lerpTime * Time.deltaTime);
 
 		//Print the time of when the function is first called.
 		Debug.Log("Started Coroutine at timestamp : " + Time.time);
 
 		//yield on a new YieldInstruction that waits for 5 seconds.
-		yield return new WaitForSeconds(10);
+		yield return new WaitForSeconds(6);
 
 		//After we have waited 5 seconds print the time again.
 		Debug.Log("Finished Coroutine at timestamp : " + Time.time);
 		b_reduceRange = false;
-
-
 	}
 
 	IEnumerator CoroutineDecreaseRange()
 	{
 
-		m_Range = Mathf.Lerp(m_Range, 5, lerpTime * Time.deltaTime);
+		m_Range = Mathf.Lerp(m_Range, 0, lerpTime * Time.deltaTime);
 
 		//Print the time of when the function is first called.
 		Debug.Log("Started Coroutine at timestamp : " + Time.time);
 
 		//yield on a new YieldInstruction that waits for 5 seconds.
-		yield return new WaitForSeconds(1);
+		yield return new WaitForSeconds(2);
 
 		//After we have waited 5 seconds print the time again.
 		Debug.Log("Finished Coroutine at timestamp : " + Time.time);

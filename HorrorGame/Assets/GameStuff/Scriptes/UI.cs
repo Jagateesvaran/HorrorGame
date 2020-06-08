@@ -41,6 +41,11 @@ public class UI : MonoBehaviour
         }
     }
 
+    public void QuitButton()
+    {   
+        Application.Quit();     
+    }
+
 
     public void OffScreen()
     {

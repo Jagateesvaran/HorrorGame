@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Random = UnityEngine.Random;
+using UnityEditor;
 // In this basic AI Script, I will have the enemy chase you for 5 seconds.
 
 // Pretty much you are free to do ANY kind of AI you would like to use, just make sure
@@ -28,6 +29,9 @@ public class ComeTowardsSound : MonoBehaviour {
 	private int targetWaypointIndex = 0;
 	private float minDistance = 0.2f;
 	private float lastWaypointIndex;
+
+	// Spawn Blood when ghost walking around every x seconds
+	public GameObject blood;
 
 	
 
@@ -58,6 +62,10 @@ public class ComeTowardsSound : MonoBehaviour {
 
 			transform.position = Vector3.MoveTowards(transform.position, targetWaypoint.position, movementStep);
 		}
+
+
+
+
 	}
 
 
@@ -66,6 +74,7 @@ public class ComeTowardsSound : MonoBehaviour {
 	{
 		if (currentDistance <= minDistance)
 		{
+			Instantiate(blood, this.gameObject.transform.position, Quaternion.identity);
 			//targetWaypointIndex++;
 			UpdateTargetWaypoint();
 		}
