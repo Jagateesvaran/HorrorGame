@@ -41,7 +41,10 @@ public class WebPlayerMic : MonoBehaviour {
 	string seletedInput;
 	string GobalInput;
 
-
+	public void Slider_Changed(float newValue)
+	{
+		amp = newValue;
+	}
 
 
 	IEnumerator Start () {
