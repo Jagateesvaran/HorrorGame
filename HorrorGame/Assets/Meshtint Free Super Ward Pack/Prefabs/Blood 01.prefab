@@ -98,7 +98,7 @@ MonoBehaviour:
     type: 3}
   m_TransparencyStripe: {fileID: 4800000, guid: fe531002a791f6143a7087ee8204116e,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_StripeTex: {fileID: 2800000, guid: 52f633b7c9c0a49429d694c9a9d4e20d, type: 3}
   m_StripeWidth: 0.1
   m_StripeDensity: 5

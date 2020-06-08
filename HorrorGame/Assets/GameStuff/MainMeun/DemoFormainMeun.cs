@@ -1,8 +1,8 @@
 ﻿using System.Collections;
-using System.ComponentModel.Design.Serialization;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Demo2 : MonoBehaviour
+public class DemoFormainMeun : MonoBehaviour
 {
 	public enum ScanMode { SCAN_DIR = 0, SCAN_SPH };
 	[Header("Parameters")]
@@ -18,14 +18,6 @@ public class Demo2 : MonoBehaviour
 	[Header("Internal")]
 	public Scanner.ScannerObject[] m_Fxs;
 
-	public WebPlayerMic mic;
-	public bool b_reduceRange = false;
-
-
-	[SerializeField]
-	[Range(0,5)]
-	float lerpTime = 1f;
-
 
 	void Start()
 	{
@@ -34,23 +26,14 @@ public class Demo2 : MonoBehaviour
 			m_Fxs[i].Initialize();
 
 		m_FxType = Scanner.ScannerObject.FxType.FT_Additional;
-		m_Range = 11f;
-	}
 
+
+
+	}
 	void Update()
 	{
 
-
-		//&& increase == false
-		if (mic.volumeinput >= 10 && m_Range != 30 )
-		{
-			StartCoroutine(CoroutineIncreaseRange());
-		}
-		else if (b_reduceRange == false)
-		{
-			StartCoroutine(CoroutineDecreaseRange());
-		}
-		
+	
 
 		for (int i = 0; i < m_Fxs.Length; i++)
 		{
@@ -84,42 +67,5 @@ public class Demo2 : MonoBehaviour
 
 
 
-	IEnumerator CoroutineIncreaseRange()
-	{
-
-		b_reduceRange = true;
-
-		m_Range = Mathf.Lerp(m_Range, 30, lerpTime * Time.deltaTime);
-
-		//Print the time of when the function is first called.
-		Debug.Log("Started Coroutine at timestamp : " + Time.time);
-
-		//yield on a new YieldInstruction that waits for 5 seconds.
-		yield return new WaitForSeconds(10);
-
-		//After we have waited 5 seconds print the time again.
-		Debug.Log("Finished Coroutine at timestamp : " + Time.time);
-		b_reduceRange = false;
-
-
-	}
-
-	IEnumerator CoroutineDecreaseRange()
-	{
-
-		m_Range = Mathf.Lerp(m_Range, 5, lerpTime * Time.deltaTime);
-
-		//Print the time of when the function is first called.
-		Debug.Log("Started Coroutine at timestamp : " + Time.time);
-
-		//yield on a new YieldInstruction that waits for 5 seconds.
-		yield return new WaitForSeconds(1);
-
-		//After we have waited 5 seconds print the time again.
-		Debug.Log("Finished Coroutine at timestamp : " + Time.time);
-
-	}
-
-
+	
 }
-
