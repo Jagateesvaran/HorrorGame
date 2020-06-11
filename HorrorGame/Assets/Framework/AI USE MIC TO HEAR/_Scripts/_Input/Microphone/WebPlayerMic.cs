@@ -182,7 +182,7 @@ public class WebPlayerMic : MonoBehaviour {
 						volumeinput = transform.localScale.y;
 						//Debug.Log(transform.localScale.y.ToString());            
 			//----------------------------------------------------------------------------------------------------------------
-			Debug.Log ("Microphone is now admiting sound into your game, you may delete this debug log in code if you no longer need it.");
+			//Debug.Log ("Microphone is now admiting sound into your game, you may delete this debug log in code if you no longer need it.");
 				}
 		}
 }

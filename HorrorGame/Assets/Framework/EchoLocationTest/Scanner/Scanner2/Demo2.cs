@@ -95,13 +95,13 @@ public class Demo2 : MonoBehaviour
 		m_Range = Mathf.Lerp(m_Range, 30, lerpTime * Time.deltaTime);
 
 		//Print the time of when the function is first called.
-		Debug.Log("Started Coroutine at timestamp : " + Time.time);
+		//Debug.Log("Started Coroutine at timestamp : " + Time.time);
 
 		//yield on a new YieldInstruction that waits for 5 seconds.
 		yield return new WaitForSeconds(5);
 
 		//After we have waited 5 seconds print the time again.
-		Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+		//Debug.Log("Finished Coroutine at timestamp : " + Time.time);
 		b_reduceRange = false;
 	}
 
@@ -111,13 +111,13 @@ public class Demo2 : MonoBehaviour
 		m_Range = Mathf.Lerp(m_Range, 0, lerpTime * Time.deltaTime);
 
 		//Print the time of when the function is first called.
-		Debug.Log("Started Coroutine at timestamp : " + Time.time);
+		//Debug.Log("Started Coroutine at timestamp : " + Time.time);
 
 		//yield on a new YieldInstruction that waits for 5 seconds.
 		yield return new WaitForSeconds(1);
 
 		//After we have waited 5 seconds print the time again.
-		Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+		//Debug.Log("Finished Coroutine at timestamp : " + Time.time);
 
 	}
 
