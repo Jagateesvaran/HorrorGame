@@ -43,7 +43,6 @@ public class Demo2 : MonoBehaviour
 		for (int i = 0; i < m_Fxs.Length; i++)
 			m_Fxs[i].Initialize();
 
-		//&& increase == false
 		if (mic.volumeinput >= 10 && m_Range != 30 )
 		{
 			StartCoroutine(CoroutineIncreaseRange());
@@ -51,6 +50,12 @@ public class Demo2 : MonoBehaviour
 		else if (b_reduceRange == false)
 		{
 			StartCoroutine(CoroutineDecreaseRange());
+		}
+
+
+		if (Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("d"))
+		{
+			m_Range = Mathf.Lerp(m_Range, 10, lerpTime * Time.deltaTime);
 		}
 		
 
@@ -85,7 +90,6 @@ public class Demo2 : MonoBehaviour
 	}
 
 
-
 	IEnumerator CoroutineIncreaseRange()
 	{
 
@@ -104,6 +108,7 @@ public class Demo2 : MonoBehaviour
 		//Debug.Log("Finished Coroutine at timestamp : " + Time.time);
 		b_reduceRange = false;
 	}
+
 
 	IEnumerator CoroutineDecreaseRange()
 	{
