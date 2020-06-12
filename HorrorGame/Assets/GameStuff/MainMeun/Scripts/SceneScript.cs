@@ -19,6 +19,6 @@ public class SceneScript : MonoBehaviour
 
     public void GoToGameScene()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("CutScene");
     }
 }
