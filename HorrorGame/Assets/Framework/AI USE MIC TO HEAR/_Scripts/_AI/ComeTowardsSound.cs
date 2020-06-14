@@ -25,6 +25,12 @@ public class ComeTowardsSound : MonoBehaviour {
 	public float Speed; // ------------------- The speed at which the enemy will follow us (Change in Inspector).
 
 
+	public List<Transform> waypoints = new List<Transform>();
+	private Transform targetWaypoint;
+	private int targetWaypointIndex = 0;
+	private float minDistance = 0.2f;
+	private float lastWaypointIndex;
+
 	// Spawn Blood when ghost walking around every x seconds
 	public GameObject blood;
 
@@ -38,10 +44,13 @@ public class ComeTowardsSound : MonoBehaviour {
 	private void Start()
 	{
 		playerHeard = false;
-	
+		//targetWaypoint = waypoints[targetWaypointIndex];
 
 		agent = GetComponent<NavMeshAgent>();
 
+		// Disabling auto-braking allows for continuous movement
+		// between points (ie, the agent doesn't slow down as it
+		// approaches a destination point).
 		agent.autoBraking = false;
 
 		GotoNextPoint();
@@ -51,6 +60,8 @@ public class ComeTowardsSound : MonoBehaviour {
 	void Update(){
 		if (playerHeard) { // --------------------------------------------------- If the player is heard, do the following.
 			TimeToSearch -= Time.deltaTime;// ----------------------------------- Deduct time for finding player.
+			//transform.LookAt(player); // ---------------------------------------- Always face the player (This is just for basic AI Guys).
+			//transform.Translate(Vector3.forward * Speed * Time.deltaTime); // --- Chase our player at our Speed float.
 			agent.destination = player.position;
 			if (TimeToSearch <= 0){ // ------------------------------------------- If time reaches zero, then we are no longer chasing the player.
 				playerHeard = false; // --------------- Chasing player no longer happens.
@@ -59,20 +70,60 @@ public class ComeTowardsSound : MonoBehaviour {
 		}
 		else if (!playerHeard)
 		{
+			//float movementStep = Speed * Time.deltaTime;
+
+			//float distance = Vector3.Distance(transform.position, targetWaypoint.position);
+			//CheckDistanceToWaypoint(distance);
+
+
+			//transform.position = Vector3.MoveTowards(transform.position, targetWaypoint.position, movementStep);
+
+			// Choose the next destination point when the agent gets
+			// close to the current one.
 			if (!agent.pathPending && agent.remainingDistance < 0.5f)
 				GotoNextPoint();
 		}
+
+
+
+
 	}
 
 
 
-	
+	//void CheckDistanceToWaypoint(float currentDistance)
+	//{
+	//	if (currentDistance <= minDistance)
+	//	{
+	//		Instantiate(blood, this.gameObject.transform.position, Quaternion.identity);
+	//		//targetWaypointIndex++;
+	//		UpdateTargetWaypoint();
+	//	}
+	//}
 
-	void OnTriggerEnter(Collider col){ // ------- col is the variable name I gave for Collider.	
+	//void UpdateTargetWaypoint()
+	//{
+
+	//	targetWaypoint = waypoints[Random.Range(0, 4)];
+	//}
+
+	// The below code I will explain as it seems very simple, and it is! But I want to explain why I did it
+	// this way and not another way. To keep it simple.
+
+	// Okay, if the Sound Zone (the trigger for our microphone) hits this enemy, then we will enable
+	// the playerHeard bool to true, by being true, the code above this is then activated to happen until
+	// the 5 seconds has reached 0, then at the end of the code up top, when it says "TimeToSearch = 5.0f"
+	// It's resetting the time back to 5 seconds again, so if this code BELOW gets triggered again
+	// The AI Can chase us with 5 seconds again.
+
+
+	void OnTriggerEnter(Collider col){ // ------- col is the variable name I gave for Collider.
+		// AI Game Logic Here, go to the exact position the noise was heard at.
+	
 		if(col.gameObject.tag == "SoundZone"){ // --- If the Sound Zone (Our microphone hits the player then activate.
 			playerHeard = true; // ------------------- Player is heard.
+			}
 		}
-	}
 
 
 
