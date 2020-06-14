@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Random = UnityEngine.Random;
 using UnityEditor;
+using UnityEngine.AI;
 // In this basic AI Script, I will have the enemy chase you for 5 seconds.
 
 // Pretty much you are free to do ANY kind of AI you would like to use, just make sure
@@ -33,34 +34,54 @@ public class ComeTowardsSound : MonoBehaviour {
 	// Spawn Blood when ghost walking around every x seconds
 	public GameObject blood;
 
-	
+
+	public Transform[] points;
+	private int destPoint = 0;
+	private NavMeshAgent agent;
+
+
 
 	private void Start()
 	{
 		playerHeard = false;
-		targetWaypoint = waypoints[targetWaypointIndex];
+		//targetWaypoint = waypoints[targetWaypointIndex];
+
+		agent = GetComponent<NavMeshAgent>();
+
+		// Disabling auto-braking allows for continuous movement
+		// between points (ie, the agent doesn't slow down as it
+		// approaches a destination point).
+		agent.autoBraking = false;
+
+		GotoNextPoint();
 	}
 
 
 	void Update(){
 		if (playerHeard) { // --------------------------------------------------- If the player is heard, do the following.
 			TimeToSearch -= Time.deltaTime;// ----------------------------------- Deduct time for finding player.
-			transform.LookAt(player); // ---------------------------------------- Always face the player (This is just for basic AI Guys).
-			transform.Translate(Vector3.forward * Speed * Time.deltaTime); // --- Chase our player at our Speed float.
-			if(TimeToSearch <= 0){ // ------------------------------------------- If time reaches zero, then we are no longer chasing the player.
+			//transform.LookAt(player); // ---------------------------------------- Always face the player (This is just for basic AI Guys).
+			//transform.Translate(Vector3.forward * Speed * Time.deltaTime); // --- Chase our player at our Speed float.
+			agent.destination = player.position;
+			if (TimeToSearch <= 0){ // ------------------------------------------- If time reaches zero, then we are no longer chasing the player.
 				playerHeard = false; // --------------- Chasing player no longer happens.
 				TimeToSearch = 5.0f; // Revert back to our 5 seconds for next time.
 			}
 		}
 		else if (!playerHeard)
 		{
-			float movementStep = Speed * Time.deltaTime;
+			//float movementStep = Speed * Time.deltaTime;
 
-			float distance = Vector3.Distance(transform.position, targetWaypoint.position);
-			CheckDistanceToWaypoint(distance);
+			//float distance = Vector3.Distance(transform.position, targetWaypoint.position);
+			//CheckDistanceToWaypoint(distance);
 
 
-			transform.position = Vector3.MoveTowards(transform.position, targetWaypoint.position, movementStep);
+			//transform.position = Vector3.MoveTowards(transform.position, targetWaypoint.position, movementStep);
+
+			// Choose the next destination point when the agent gets
+			// close to the current one.
+			if (!agent.pathPending && agent.remainingDistance < 0.5f)
+				GotoNextPoint();
 		}
 
 
@@ -70,21 +91,21 @@ public class ComeTowardsSound : MonoBehaviour {
 
 
 
-	void CheckDistanceToWaypoint(float currentDistance)
-	{
-		if (currentDistance <= minDistance)
-		{
-			Instantiate(blood, this.gameObject.transform.position, Quaternion.identity);
-			//targetWaypointIndex++;
-			UpdateTargetWaypoint();
-		}
-	}
+	//void CheckDistanceToWaypoint(float currentDistance)
+	//{
+	//	if (currentDistance <= minDistance)
+	//	{
+	//		Instantiate(blood, this.gameObject.transform.position, Quaternion.identity);
+	//		//targetWaypointIndex++;
+	//		UpdateTargetWaypoint();
+	//	}
+	//}
 
-	void UpdateTargetWaypoint()
-	{
+	//void UpdateTargetWaypoint()
+	//{
 
-		targetWaypoint = waypoints[Random.Range(0, 4)];
-	}
+	//	targetWaypoint = waypoints[Random.Range(0, 4)];
+	//}
 
 	// The below code I will explain as it seems very simple, and it is! But I want to explain why I did it
 	// this way and not another way. To keep it simple.
@@ -103,4 +124,23 @@ public class ComeTowardsSound : MonoBehaviour {
 			playerHeard = true; // ------------------- Player is heard.
 			}
 		}
+
+
+
+	void GotoNextPoint()
+	{
+		// Returns if no points have been set up
+		if (points.Length == 0)
+			return;
+
+		// Set the agent to go to the currently selected destination.
+		agent.destination = points[destPoint].position;
+
+		// Choose the next point in the array as the destination,
+		// cycling to the start if necessary.
+		destPoint = (destPoint + 1) % points.Length;
+	}
 }
+
+
+
