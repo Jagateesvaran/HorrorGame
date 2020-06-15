@@ -12,8 +12,6 @@ public class Demo2 : MonoBehaviour
 	[Header("Parameters")]
 	public Scanner.ScannerObject.FxType m_FxType = Scanner.ScannerObject.FxType.FT_None;
 	public ScanMode m_ScanMode = ScanMode.SCAN_DIR;
-	public GameObject m_Emitter;
-	public GameObject m_Emitter2;
 
 	public ScanEmitter[] m_Emitters;
 
