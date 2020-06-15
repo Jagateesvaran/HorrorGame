@@ -1,16 +1,17 @@
 ﻿using System.Collections;
-using System.ComponentModel.Design.Serialization;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Demo2 : MonoBehaviour
+public class ItemEchoLocation : MonoBehaviour
 {
+
 	public enum ScanMode { SCAN_DIR = 0, SCAN_SPH };
 	[Header("Parameters")]
 	public Scanner.ScannerObject.FxType m_FxType = Scanner.ScannerObject.FxType.FT_None;
 	public ScanMode m_ScanMode = ScanMode.SCAN_DIR;
 	public GameObject m_Emitter;
 	public Vector4 m_Dir = new Vector4(1, 0, 0, 0);
-	[Range(0f, 100f)] public float m_Amplitude = 0f;
+	[Range(0f, 2f)] public float m_Amplitude = 0f;
 	[Range(0f, 16f)] public float m_Exp = 3f;
 	[Range(0f, 64f)] public float m_Interval = 20f;
 	[Range(0f, 32f)] public float m_Speed = 10f;
@@ -18,12 +19,11 @@ public class Demo2 : MonoBehaviour
 	[Header("Internal")]
 	public Scanner.ScannerObject[] m_Fxs;
 
-	public WebPlayerMic mic;
-	public bool b_reduceRange = false;
+
 
 
 	[SerializeField]
-	[Range(0,5)]
+	[Range(0, 5)]
 	float lerpTime = 1f;
 
 
@@ -34,7 +34,7 @@ public class Demo2 : MonoBehaviour
 			m_Fxs[i].Initialize();
 
 		m_FxType = Scanner.ScannerObject.FxType.FT_Additional;
-		m_Range = 5f;
+		m_Range = 11f;
 	}
 
 	void Update()
@@ -42,22 +42,6 @@ public class Demo2 : MonoBehaviour
 		m_Fxs = GameObject.FindObjectsOfType<Scanner.ScannerObject>();
 		for (int i = 0; i < m_Fxs.Length; i++)
 			m_Fxs[i].Initialize();
-
-		//if (mic.volumeinput >= 10 && m_Range != 30 )
-		//{
-		//	StartCoroutine(CoroutineIncreaseRange());
-		//}
-		//else if (b_reduceRange == false)
-		//{
-		//	StartCoroutine(CoroutineDecreaseRange());
-		//}
-
-
-		//if (Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("d"))
-		//{
-		//	m_Range = Mathf.Lerp(m_Range, 10, lerpTime * Time.deltaTime);
-		//}
-		
 
 		for (int i = 0; i < m_Fxs.Length; i++)
 		{
@@ -90,42 +74,5 @@ public class Demo2 : MonoBehaviour
 	}
 
 
-	IEnumerator CoroutineIncreaseRange()
-	{
-
-		b_reduceRange = true;
-
-		//m_Range = Mathf.Lerp(m_Range, 30, lerpTime * Time.deltaTime);
-		m_Range = Mathf.Lerp(m_Range, 30, lerpTime * Time.deltaTime);
-
-		//Print the time of when the function is first called.
-		//Debug.Log("Started Coroutine at timestamp : " + Time.time);
-
-		//yield on a new YieldInstruction that waits for 5 seconds.
-		yield return new WaitForSeconds(5);
-
-		//After we have waited 5 seconds print the time again.
-		//Debug.Log("Finished Coroutine at timestamp : " + Time.time);
-		b_reduceRange = false;
-	}
-
-
-	IEnumerator CoroutineDecreaseRange()
-	{
-
-		m_Range = Mathf.Lerp(m_Range, 0, lerpTime * Time.deltaTime);
-
-		//Print the time of when the function is first called.
-		//Debug.Log("Started Coroutine at timestamp : " + Time.time);
-
-		//yield on a new YieldInstruction that waits for 5 seconds.
-		yield return new WaitForSeconds(1);
-
-		//After we have waited 5 seconds print the time again.
-		//Debug.Log("Finished Coroutine at timestamp : " + Time.time);
-
-	}
-
 
 }
-
