@@ -16,9 +16,9 @@ public class Demo2 : MonoBehaviour
 	public ScanEmitter[] m_Emitters;
 
 	public Vector4 m_Dir = new Vector4(1, 0, 0, 0);
-	[Range(0f, 100f)] public float m_Amplitude = 0f;
+	[Range(0f, 2f)] public float m_Amplitude = 0f;
 	[Range(0f, 16f)] public float m_Exp = 3f;
-	[Range(0f, 64f)] public float m_Interval = 20f;
+	[Range(0f, 60f)] public float m_Interval = 20f;
 	[Range(0f, 32f)] public float m_Speed = 10f;
 
 	[HideInInspector]
@@ -97,6 +97,17 @@ public class Demo2 : MonoBehaviour
 				/* PLAYER is at index = 0 */
 				m_Emitters[0].range = m_Range;
 
+				// when the object has no velocity it set the range to zero and if moving the range to 20
+				if (m_Emitters[1].emitter.gameObject.GetComponent<Rigidbody>().velocity == new Vector3(0, 0 ,0 ))
+				{
+					m_Emitters[1].range = 0;
+				}
+				else
+				{
+					m_Emitters[1].range = 20;
+				}
+				
+
 				for (int j = 0; j < EMITTER_COUNT; ++j)
 				{
 					if (j >= m_Emitters.Length) break;
@@ -105,6 +116,7 @@ public class Demo2 : MonoBehaviour
 				}
 				m_Fxs[i].SetMaterialsVectorArray("_LightEmitters", emitterPositions.ToArray());
 				m_Fxs[i].SetMaterialsFloatArray("_LightEmitterRange", emitterRanges.ToArray());
+
 				//for(int i = 0; )
 				//m_Fxs[i].SetMaterialsVector("_LightSweepVector", m_Emitter.GetComponent<Transform>().position);
 				//m_Fxs[i].SetMaterialsVector("_LightSweepVector2", m_Emitter2.GetComponent<Transform>().position);
