@@ -61,6 +61,16 @@ namespace Scanner
 				mats[i].SetFloat (name, f);
 			}
 		}
+
+		public void SetMaterialsFloatArray(string name, float[] v)
+		{
+			Material[] mats = m_Rd.materials;
+			for (int i = 0; i < mats.Length; i++)
+			{
+				mats[i].SetFloatArray(name, v);
+			}
+		}
+
 		public void SetMaterialsVector (string name, Vector4 v)
 		{
 			Material[] mats = m_Rd.materials;
@@ -69,6 +79,16 @@ namespace Scanner
 				mats[i].SetVector (name, v);
 			}
 		}
+
+		public void SetMaterialsVectorArray(string name, Vector4[] v)
+		{
+			Material[] mats = m_Rd.materials;
+			for (int i = 0; i < mats.Length; i++)
+			{
+				mats[i].SetVectorArray(name, v);
+			}
+		}
+
 		public void ApplyDirectionalScan (Vector4 dir)
 		{
 			Material[] mats = m_Rd.materials;

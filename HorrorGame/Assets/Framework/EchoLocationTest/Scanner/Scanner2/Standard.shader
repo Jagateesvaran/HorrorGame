@@ -6,6 +6,7 @@
 		_Glossiness ("Smoothness", Range(0, 1)) = 0
 		_Metallic ("Metallic", Range(0, 1)) = 0
 		_LightSweepVector ("Light Sweep Vector", Vector) = (0, 0, 1, 0)
+		_LightSweepVector2 ("Light Sweep Vector2", Vector) = (0, 0, 1, 0)
 		_LightSweepAmp ("Light Sweep Amp", Range(0, 2)) = 1
 		_LightSweepExp ("Light Sweep Exp", Range(0, 32)) = 10
 		_LightSweepInterval ("Light Sweep Interval", Range(0, 32)) = 20
@@ -20,6 +21,8 @@
 		#pragma surface surf Standard finalcolor:scanColor
 		#pragma multi_compile ALS_DIRECTIONAL ALS_SPHERICAL
 		#include "Utils.cginc"
+
+
 		void surf (Input IN, inout SurfaceOutputStandard o)
 		{
 			fixed4 tc = tex2D(_MainTex, IN.uv_MainTex);
@@ -31,7 +34,7 @@
 		}
 		void scanColor (Input IN, SurfaceOutputStandard o, inout fixed4 color)
 		{
-			float4 sonar = LightSweepColor(float4(IN.worldPos, 1));
+			float4 sonar = MultiLightSweepColor(float4(IN.worldPos, 1));
 			color += sonar;
 		}
 		ENDCG
