@@ -8,6 +8,7 @@ TagManager:
   - SoundZone
   - endPoint
   - KeyCard
+  - TimeTrigger
   layers:
   - Default
   - TransparentFX
