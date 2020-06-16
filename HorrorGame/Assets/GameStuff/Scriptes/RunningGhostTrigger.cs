@@ -14,7 +14,7 @@ public class RunningGhostTrigger : MonoBehaviour
     public GameObject Monster;
     private CameraShaker cameraShaker;
 
-    public Demo2 demo2;
+    public ScannerManager_MicInput scannerManager_MicInput;
 
 
     // Start is called before the first frame update
@@ -35,7 +35,7 @@ public class RunningGhostTrigger : MonoBehaviour
 
         if (other.gameObject.CompareTag("Player"))
         {
-            demo2.EnableMic = false;
+            scannerManager_MicInput.EnableMic = false;
             cameraShaker.ShakeOnce(4f, 20f, 20f , 15f);
             Instantiate(Monster, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z + 10), new Quaternion(0 , 180, 0, 0));
             this.gameObject.GetComponent<BoxCollider>().enabled = false;
@@ -46,7 +46,7 @@ public class RunningGhostTrigger : MonoBehaviour
     IEnumerator EnableMicTrue()
     {
         yield return new WaitForSeconds(12);
-        demo2.EnableMic = true;
+        scannerManager_MicInput.EnableMic = true;
         Destroy(this.gameObject, 1f);
     }
 
