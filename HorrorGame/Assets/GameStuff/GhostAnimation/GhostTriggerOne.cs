@@ -8,6 +8,7 @@ public class GhostTriggerOne : MonoBehaviour
     public AudioClip otherClip;
 
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,7 @@ public class GhostTriggerOne : MonoBehaviour
         if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Running"))
         {
             transform.Translate(Vector3.forward * (5 * Time.deltaTime));
+            Destroy(this.gameObject, 4f);
         }
     }
 }

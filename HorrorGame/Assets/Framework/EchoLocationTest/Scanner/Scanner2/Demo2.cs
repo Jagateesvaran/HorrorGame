@@ -37,9 +37,13 @@ public class Demo2 : MonoBehaviour
 	[Range(0,5)]
 	float lerpTime = 1f;
 
+	public bool EnableMic;
+
 
 	void Start()
 	{
+		EnableMic = true;
+
 		emitterPositions = new List<Vector4>();
 		emitterRanges = new List<float>();
 
@@ -57,20 +61,35 @@ public class Demo2 : MonoBehaviour
 		for (int i = 0; i < m_Fxs.Length; i++)
 			m_Fxs[i].Initialize();
 
-		if (mic.volumeinput >= 10 && m_Range != 30)
+
+		if (EnableMic == true)
 		{
-			StartCoroutine(CoroutineIncreaseRange());
-		}
-		else if (b_reduceRange == false)
-		{
-			StartCoroutine(CoroutineDecreaseRange());
-		}
+			if (mic.volumeinput >= 10 && m_Range != 30)
+			{
+				StartCoroutine(CoroutineIncreaseRange());
+			}
+			else if (b_reduceRange == false)
+			{
+				StartCoroutine(CoroutineDecreaseRange());
+			}
 
 
-		if (Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("d"))
-		{
-			m_Range = Mathf.Lerp(m_Range, 10, lerpTime * Time.deltaTime);
+			if (Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("d"))
+			{
+				m_Range = Mathf.Lerp(m_Range, 10, lerpTime * Time.deltaTime);
+			}
 		}
+		else if (EnableMic == false) 
+		{
+
+			 m_Amplitude = 2f;
+			 m_Exp = 3f;
+			 m_Interval = 5f;
+			 m_Speed = 5f;
+			 m_Range = 50;
+
+		}
+		
 
 
 		for (int i = 0; i < m_Fxs.Length; i++)
@@ -134,7 +153,6 @@ public class Demo2 : MonoBehaviour
 
 	IEnumerator CoroutineIncreaseRange()
 	{
-
 		b_reduceRange = true;
 
 		//m_Range = Mathf.Lerp(m_Range, 30, lerpTime * Time.deltaTime);
@@ -154,7 +172,6 @@ public class Demo2 : MonoBehaviour
 
 	IEnumerator CoroutineDecreaseRange()
 	{
-
 		m_Range = Mathf.Lerp(m_Range, 0, lerpTime * Time.deltaTime);
 
 		//Print the time of when the function is first called.
