@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class GhostTriggerOne : MonoBehaviour
 {
+
+    /*This SC is Onse the ghost start running then destory object after some time
+     Link to : Running Ghost Trigger */
+    
     private Animator m_Animator;
     public AudioClip otherClip;
-
-
 
     // Start is called before the first frame update
     void Start()

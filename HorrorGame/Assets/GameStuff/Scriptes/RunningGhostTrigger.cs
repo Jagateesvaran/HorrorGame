@@ -5,6 +5,12 @@ using EZCameraShake;
 
 public class RunningGhostTrigger : MonoBehaviour
 {
+
+
+    /*This SC is ones player set over the trigger then it does stuff
+     Link to : Ghost Trigger One */
+
+
     public GameObject Monster;
     private CameraShaker cameraShaker;
 
