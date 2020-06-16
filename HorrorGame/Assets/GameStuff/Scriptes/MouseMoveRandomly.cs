@@ -37,7 +37,7 @@ public class MouseMoveRandomly : MonoBehaviour
         vaildPath = !navMeshAgent.CalculatePath(target, path);
         if (vaildPath)
         {
-            Debug.Log("False Path");
+            //Debug.Log("False Path");
         }
 
         while (!vaildPath)
