@@ -8,6 +8,8 @@ public class BoyTrigger : MonoBehaviour
     public AudioSource VoiceLineOne;
     public AudioSource VoiceLineTwo;
 
+    public GameObject boyModal;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,7 @@ public class BoyTrigger : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            this.gameObject.GetComponent<BoxCollider>().enabled = false;
             Debug.Log("hit Player");
             StartCoroutine(ExampleCoroutine());
         }
@@ -33,8 +36,11 @@ public class BoyTrigger : MonoBehaviour
     IEnumerator ExampleCoroutine()
     {
         VoiceLineOne.Play();
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         VoiceLineTwo.Play();
+        yield return new WaitForSeconds(4);
+        Destroy(boyModal);
+        Destroy(this.gameObject);
     }
 
 }

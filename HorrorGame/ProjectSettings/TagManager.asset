@@ -9,6 +9,8 @@ TagManager:
   - endPoint
   - KeyCard
   - TimeTrigger
+  - DeathWall
+  - Monster
   layers:
   - Default
   - TransparentFX
