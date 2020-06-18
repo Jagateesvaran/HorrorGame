@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Examine : MonoBehaviour
 {
-    public Camera mainCam;//Camera Object Will Be Placed In Front Of
+    Camera mainCam;//Camera Object Will Be Placed In Front Of
     GameObject clickedObject;//Currently Clicked Object
 
     //Holds Original Postion And Rotation So The Object Can Be Replaced Correctly
@@ -17,6 +17,7 @@ public class Examine : MonoBehaviour
 
     void Start()
     {
+        mainCam = Camera.main;
         examineMode = false;
     }
 
@@ -28,6 +29,9 @@ public class Examine : MonoBehaviour
         TurnObject();//Allows Object To Be Rotated
 
         ExitExamineMode();//Returns Object To Original Postion
+
+        Vector3 forward = transform.TransformDirection(Vector3.forward) * 10;
+        Debug.DrawRay(transform.position, forward, Color.green);
     }
 
 
@@ -35,14 +39,11 @@ public class Examine : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && examineMode == false)
         {
-
             RaycastHit hit;
-           
+            Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(mainCam.transform.position, mainCam.transform.forward, out hit, 100))
+            if (Physics.Raycast(ray, out hit))
             {
-                Debug.Log(hit.transform.gameObject.tag);
-
 
                 if (hit.transform.gameObject.CompareTag("Item"))
                 {
@@ -62,6 +63,13 @@ public class Examine : MonoBehaviour
                     //Turn Examine Mode To True
                     examineMode = true;
                 }
+
+
+                if (hit.transform.gameObject.CompareTag("Press"))
+                {
+                    Debug.Log("Hit Press button");
+                }
+
                
             }
         }
@@ -78,6 +86,8 @@ public class Examine : MonoBehaviour
 
             clickedObject.transform.Rotate(Vector3.up, -xAxis, Space.World);
             clickedObject.transform.Rotate(Vector3.right, yAxis, Space.World);
+
+
         }
     }
 

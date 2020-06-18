@@ -11,6 +11,8 @@ TagManager:
   - TimeTrigger
   - DeathWall
   - Monster
+  - Item
+  - Press
   layers:
   - Default
   - TransparentFX
