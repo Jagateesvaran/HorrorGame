@@ -25,14 +25,19 @@ public class TriggerForCrawlingGhost : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            //this.gameObject.GetComponent<BoxCollider>().enabled = false;
-            StartCoroutine(SpawnMonsterWave());
+            this.gameObject.GetComponent<BoxCollider>().enabled = false;   
+           StartCoroutine(SpawnMonsterWave());
+            
         }
     }
 
     IEnumerator SpawnMonsterWave()
     {
-        Instantiate(Monster, locationArray[0].transform.position, locationArray[0].transform.rotation);
-        yield return new WaitForSeconds(1);
+        for (int i = 0; i < 2; i++)
+        {
+            Instantiate(Monster, locationArray[0].transform.position, locationArray[0].transform.rotation);
+            Instantiate(Monster, locationArray[1].transform.position, locationArray[0].transform.rotation);
+            yield return new WaitForSeconds(4);
+        }  
     }
 }

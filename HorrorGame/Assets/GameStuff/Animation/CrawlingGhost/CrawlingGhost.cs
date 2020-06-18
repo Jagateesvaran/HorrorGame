@@ -5,7 +5,7 @@ using UnityEngine;
 public class CrawlingGhost : MonoBehaviour
 {
 
-    public float movementSpeed = 5.0f;
+    public float movementSpeed = 10.0f;
 
 
     // Start is called before the first frame update
