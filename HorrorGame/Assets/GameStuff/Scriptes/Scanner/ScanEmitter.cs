@@ -7,4 +7,5 @@ public class ScanEmitter
 {
     public GameObject emitter;
     public float range;
+    public bool ScanEffectOn;
 }

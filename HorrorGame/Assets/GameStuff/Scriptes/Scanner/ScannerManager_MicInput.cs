@@ -14,6 +14,7 @@ public class ScannerManager_MicInput : MonoBehaviour
 	public ScanMode m_ScanMode = ScanMode.SCAN_DIR;
 
 	public ScanEmitter[] m_Emitters;
+	public bool[] m_Emitters_On;
 
 	public Vector4 m_Dir = new Vector4(1, 0, 0, 0);
 	[Range(0f, 2f)] public float m_Amplitude = 0f;
@@ -53,6 +54,8 @@ public class ScannerManager_MicInput : MonoBehaviour
 
 		m_FxType = Scanner.ScannerObject.FxType.FT_Additional;
 		m_Range = 5f;
+
+		
 	}
 
 	void Update()
@@ -76,10 +79,10 @@ public class ScannerManager_MicInput : MonoBehaviour
 
 			if (Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("d"))
 			{
-				m_Range = Mathf.Lerp(m_Range, 10, lerpTime * Time.deltaTime);
+				m_Range = Mathf.Lerp(m_Range, 5, lerpTime * Time.deltaTime);
 			}
 		}
-		else if (EnableMic == false)
+		else if (EnableMic == false) // to make screen go crazy
 		{
 
 			m_Amplitude = 2f;
@@ -120,11 +123,11 @@ public class ScannerManager_MicInput : MonoBehaviour
 				for (int j = 1; j < m_Emitters.Length; j++)
 				{
 					// when the object has no velocity it set the range to zero and if moving the range to 20
-					if (m_Emitters[j].emitter.gameObject.GetComponent<Rigidbody>().velocity == new Vector3(0, 0, 0))
+					if (m_Emitters[j].emitter.gameObject.GetComponent<Rigidbody>().velocity == new Vector3(0, 0, 0) && m_Emitters[j].ScanEffectOn == false)
 					{
 						StartCoroutine(CoroutineDecreaseRangeObjects(j));
 					}
-					else
+					else 
 					{
 						StartCoroutine(CoroutineIncreaseRangeObjects(j));
 
@@ -162,7 +165,7 @@ public class ScannerManager_MicInput : MonoBehaviour
 		b_reduceRange = true;
 
 		//m_Range = Mathf.Lerp(m_Range, 30, lerpTime * Time.deltaTime);
-		m_Range = Mathf.Lerp(m_Range, 30, lerpTime * Time.deltaTime);
+		m_Range = Mathf.Lerp(m_Range, 10, lerpTime * Time.deltaTime);
 
 		//Print the time of when the function is first called.
 		//Debug.Log("Started Coroutine at timestamp : " + Time.time);
@@ -195,18 +198,18 @@ public class ScannerManager_MicInput : MonoBehaviour
 	IEnumerator CoroutineIncreaseRangeObjects(int index)
 	{
 
-
-		m_Emitters[index].range = Mathf.Lerp(m_Emitters[index].range, 2, lerpTime * Time.deltaTime);
-
+		m_Emitters[index].ScanEffectOn = true;
+		m_Emitters[index].range = Mathf.Lerp(m_Emitters[index].range, 10, lerpTime * Time.deltaTime);
 		
 		yield return new WaitForSeconds(10);
+		m_Emitters[index].ScanEffectOn = false;
 
 	}
 
 
 	IEnumerator CoroutineDecreaseRangeObjects(int index)
 	{
-		m_Emitters[index].range = Mathf.Lerp(m_Emitters[index].range, 0, lerpTime * Time.deltaTime);
+		m_Emitters[index].range = Mathf.Lerp(m_Emitters[index].range, 1, lerpTime * Time.deltaTime);
 
 		yield return new WaitForSeconds(1);
 
