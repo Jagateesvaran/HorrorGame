@@ -116,15 +116,21 @@ public class ScannerManager_MicInput : MonoBehaviour
 				/* PLAYER is at index = 0 */
 				m_Emitters[0].range = m_Range;
 
-				// when the object has no velocity it set the range to zero and if moving the range to 20
-				if (m_Emitters[1].emitter.gameObject.GetComponent<Rigidbody>().velocity == new Vector3(0, 0 ,0 ))
+
+				for (int j = 1; j < m_Emitters.Length; j++)
 				{
-					m_Emitters[1].range = 0;
+					// when the object has no velocity it set the range to zero and if moving the range to 20
+					if (m_Emitters[j].emitter.gameObject.GetComponent<Rigidbody>().velocity == new Vector3(0, 0, 0))
+					{
+						StartCoroutine(CoroutineDecreaseRangeObjects(j));
+					}
+					else
+					{
+						StartCoroutine(CoroutineIncreaseRangeObjects(j));
+
+					}
 				}
-				else
-				{
-					m_Emitters[1].range = 20;
-				}
+				
 				
 
 				for (int j = 0; j < EMITTER_COUNT; ++j)
@@ -184,6 +190,28 @@ public class ScannerManager_MicInput : MonoBehaviour
 		//Debug.Log("Finished Coroutine at timestamp : " + Time.time);
 
 	}
+
+
+	IEnumerator CoroutineIncreaseRangeObjects(int index)
+	{
+
+
+		m_Emitters[index].range = Mathf.Lerp(m_Emitters[index].range, 2, lerpTime * Time.deltaTime);
+
+		
+		yield return new WaitForSeconds(10);
+
+	}
+
+
+	IEnumerator CoroutineDecreaseRangeObjects(int index)
+	{
+		m_Emitters[index].range = Mathf.Lerp(m_Emitters[index].range, 0, lerpTime * Time.deltaTime);
+
+		yield return new WaitForSeconds(1);
+
+	}
+
 
 
 }
