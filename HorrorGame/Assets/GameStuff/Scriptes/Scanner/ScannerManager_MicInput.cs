@@ -13,7 +13,6 @@ public class ScannerManager_MicInput : MonoBehaviour
 	public Scanner.ScannerObject.FxType m_FxType = Scanner.ScannerObject.FxType.FT_None;
 	public ScanMode m_ScanMode = ScanMode.SCAN_DIR;
 
-	[Header("Internal")]
 	public ScanEmitter[] m_Emitters;
 
 	public Vector4 m_Dir = new Vector4(1, 0, 0, 0);
@@ -117,22 +116,15 @@ public class ScannerManager_MicInput : MonoBehaviour
 				/* PLAYER is at index = 0 */
 				m_Emitters[0].range = m_Range;
 
-
-				//Debug.Log(m_Emitters[1].emitter.gameObject.GetComponent<Rigidbody>().velocity);
-
-				for (int j = 1; j < m_Emitters.Length; j++)
+				// when the object has no velocity it set the range to zero and if moving the range to 20
+				if (m_Emitters[1].emitter.gameObject.GetComponent<Rigidbody>().velocity == new Vector3(0, 0 ,0 ))
 				{
-					// when the object has no velocity it set the range to zero and if moving the range to 20
-					if (m_Emitters[1].emitter.gameObject.GetComponent<Rigidbody>().velocity == new Vector3(0, 0, 0))
-					{
-						StartCoroutine(CoroutineDecreaseRangeObjects(1));
-					}
-					else
-					{
-						StartCoroutine(CoroutineIncreaseRangeObject(1));
-					}
+					m_Emitters[1].range = 0;
 				}
-				
+				else
+				{
+					m_Emitters[1].range = 20;
+				}
 				
 
 				for (int j = 0; j < EMITTER_COUNT; ++j)
@@ -159,8 +151,6 @@ public class ScannerManager_MicInput : MonoBehaviour
 	}
 
 
-
-	// Set Coroutine For Main Player EchoLocation
 	IEnumerator CoroutineIncreaseRange()
 	{
 		b_reduceRange = true;
@@ -179,6 +169,7 @@ public class ScannerManager_MicInput : MonoBehaviour
 		b_reduceRange = false;
 	}
 
+
 	IEnumerator CoroutineDecreaseRange()
 	{
 		m_Range = Mathf.Lerp(m_Range, 0, lerpTime * Time.deltaTime);
@@ -193,22 +184,6 @@ public class ScannerManager_MicInput : MonoBehaviour
 		//Debug.Log("Finished Coroutine at timestamp : " + Time.time);
 
 	}
-
-
-	// Set Coroutine For Other Throwable Object
-
-	IEnumerator CoroutineIncreaseRangeObject(int objectIndex)
-	{
-		m_Emitters[objectIndex].range = Mathf.Lerp(m_Emitters[objectIndex].range, 5, lerpTime * Time.deltaTime);
-		yield return new WaitForSeconds(3);
-	}
-
-	IEnumerator CoroutineDecreaseRangeObjects(int objectIndex)
-	{
-		m_Emitters[objectIndex].range = Mathf.Lerp(m_Emitters[objectIndex].range, 0, lerpTime * Time.deltaTime);
-		yield return new WaitForSeconds(1);
-	}
-
 
 
 }
