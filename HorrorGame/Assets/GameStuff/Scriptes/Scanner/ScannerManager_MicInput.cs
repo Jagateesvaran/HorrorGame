@@ -86,7 +86,7 @@ public class ScannerManager_MicInput : MonoBehaviour
 			m_Exp = 3f;
 			m_Interval = 5f;
 			m_Speed = 5f;
-			m_Range = 50;
+			m_Range = 25;
 
 		}
 

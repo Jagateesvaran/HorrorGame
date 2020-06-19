@@ -45,7 +45,7 @@ public class RunningGhostTrigger : MonoBehaviour
 
     IEnumerator EnableMicTrue()
     {
-        yield return new WaitForSeconds(12);
+        yield return new WaitForSeconds(10);
         scannerManager_MicInput.EnableMic = true;
         Destroy(this.gameObject, 1f);
     }
