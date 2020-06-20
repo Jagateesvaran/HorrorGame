@@ -57,7 +57,6 @@ public class MouseMoveRandomly : MonoBehaviour
         navMeshAgent.SetDestination(target);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!inCoRoutine)

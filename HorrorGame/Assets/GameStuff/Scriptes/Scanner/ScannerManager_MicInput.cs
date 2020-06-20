@@ -14,7 +14,6 @@ public class ScannerManager_MicInput : MonoBehaviour
 	public ScanMode m_ScanMode = ScanMode.SCAN_DIR;
 
 	public ScanEmitter[] m_Emitters;
-	public bool[] m_Emitters_On;
 
 	public Vector4 m_Dir = new Vector4(1, 0, 0, 0);
 	[Range(0f, 2f)] public float m_Amplitude = 0f;
@@ -53,7 +52,6 @@ public class ScannerManager_MicInput : MonoBehaviour
 			m_Fxs[i].Initialize();
 
 		m_FxType = Scanner.ScannerObject.FxType.FT_Additional;
-		m_Range = 5f;
 
 		
 	}
@@ -77,10 +75,10 @@ public class ScannerManager_MicInput : MonoBehaviour
 			}
 
 
-			if (Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("d"))
-			{
-				m_Range = Mathf.Lerp(m_Range, 5, lerpTime * Time.deltaTime);
-			}
+			//if (Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("d"))
+			//{
+			//	m_Range = Mathf.Lerp(m_Range, 5, lerpTime * Time.deltaTime);
+			//}
 		}
 		else if (EnableMic == false) // to make screen go crazy
 		{
@@ -199,9 +197,9 @@ public class ScannerManager_MicInput : MonoBehaviour
 	{
 
 		m_Emitters[index].ScanEffectOn = true;
-		m_Emitters[index].range = Mathf.Lerp(m_Emitters[index].range, 10, lerpTime * Time.deltaTime);
+		m_Emitters[index].range = Mathf.Lerp(m_Emitters[index].range, 5, lerpTime * Time.deltaTime);
 		
-		yield return new WaitForSeconds(10);
+		yield return new WaitForSeconds(3);
 		m_Emitters[index].ScanEffectOn = false;
 
 	}
@@ -209,7 +207,7 @@ public class ScannerManager_MicInput : MonoBehaviour
 
 	IEnumerator CoroutineDecreaseRangeObjects(int index)
 	{
-		m_Emitters[index].range = Mathf.Lerp(m_Emitters[index].range, 1, lerpTime * Time.deltaTime);
+		m_Emitters[index].range = Mathf.Lerp(m_Emitters[index].range, 2, lerpTime * Time.deltaTime);
 
 		yield return new WaitForSeconds(1);
 
