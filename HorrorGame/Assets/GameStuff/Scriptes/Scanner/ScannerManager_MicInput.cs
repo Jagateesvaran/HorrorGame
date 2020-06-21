@@ -1,7 +1,8 @@
-﻿using Boo.Lang;
-using System.Collections;
+﻿using System.Collections;
 using System.ComponentModel.Design.Serialization;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 
 public class ScannerManager_MicInput : MonoBehaviour

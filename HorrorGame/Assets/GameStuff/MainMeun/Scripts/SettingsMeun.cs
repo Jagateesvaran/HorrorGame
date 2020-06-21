@@ -7,12 +7,26 @@ using TMPro;
 
 public class SettingsMeun : MonoBehaviour
 {
+
+    public GameObject SettingsPanel;
+
     public AudioMixer audioMixer;
 
     Resolution[] resolutions;
 
     public TMP_Dropdown resolutionDropDown;
 
+
+    public void onSettingsPage()
+    {
+        SettingsPanel.SetActive(true);
+    }
+
+
+    public void offSettingsPage()
+    {
+        SettingsPanel.SetActive(false);
+    }
 
     void Start()
     {
