@@ -1,7 +1,5 @@
 ﻿using System.Collections;
-using System.ComponentModel.Design.Serialization;
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 
 
