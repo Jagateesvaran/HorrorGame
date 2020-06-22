@@ -2293,6 +2293,7 @@ GameObject:
   - component: {fileID: 531077688}
   - component: {fileID: 531077689}
   - component: {fileID: 531077690}
+  - component: {fileID: 531077682}
   m_Layer: 0
   m_Name: KeyCard
   m_TagString: Item
@@ -2300,6 +2301,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &531077682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531077681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af0dbdd28d8638c45952fefae1106ed4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Standard: {fileID: 4800000, guid: babaaa15d6dbc9348b7b285091efcfae, type: 3}
+  m_Color: {r: 0, g: 1, b: 0.021330118, a: 1}
+  m_StripeTex: {fileID: 2800000, guid: 52f633b7c9c0a49429d694c9a9d4e20d, type: 3}
+  m_StripeWidth: 0.1
+  m_StripeDensity: 5
+  m_CurrFxType: 0
+  m_Rd: {fileID: 0}
+  m_BackupShaders: []
+  m_TexDiffuse: []
+  m_TexBump: []
 --- !u!54 &531077683
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3540,7 +3563,6 @@ GameObject:
   - component: {fileID: 885051332}
   - component: {fileID: 885051331}
   - component: {fileID: 885051335}
-  - component: {fileID: 885051336}
   - component: {fileID: 885051337}
   m_Layer: 0
   m_Name: Cube
@@ -3617,8 +3639,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 885051330}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.832, y: 8.256, z: -66.02}
-  m_LocalScale: {x: 0.61994, y: 0.61994, z: 0.61994}
+  m_LocalPosition: {x: 2.3, y: 9.2, z: -56.2}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 1846932690}
   m_RootOrder: 0
@@ -3639,19 +3661,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &885051336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 885051330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e29e2dc275b2c447a494ce95cdcdec0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  theDest: {fileID: 1397496238}
 --- !u!114 &885051337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5289,7 +5298,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1397496237}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.5}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 504485808451893709}
@@ -5449,7 +5458,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1544685161}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13, y: -1.588, z: 46.105}
+  m_LocalPosition: {x: 13, y: -1.588, z: 47.48}
   m_LocalScale: {x: 0.33281, y: 0.37898, z: 3.5477}
   m_Children: []
   m_Father: {fileID: 1634025290}
@@ -6956,7 +6965,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 504485808452380143}
   m_LocalRotation: {x: -0, y: -0.08955033, z: -0, w: 0.9959823}
-  m_LocalPosition: {x: -1.8, y: -4.4, z: -2.1}
+  m_LocalPosition: {x: 3.4, y: -4.4, z: -17.75}
   m_LocalScale: {x: 0.5468, y: 1, z: 0.65055}
   m_Children:
   - {fileID: 915990445}
@@ -6979,8 +6988,9 @@ GameObject:
   - component: {fileID: 504485808460119023}
   - component: {fileID: 504485808463967657}
   - component: {fileID: 504485808452380142}
+  - component: {fileID: 504485808452380145}
   m_Layer: 0
-  m_Name: FirstPersonCharacter
+  m_Name: FirstPersonCharacterCam
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7035,6 +7045,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f967a5b689f06488ff6601e436bd1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &504485808452380145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504485808452380141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834b84b7055b8824282f0a12e9d54851, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabPos: {fileID: 1397496238}
 --- !u!20 &504485808453494735
 Camera:
   m_ObjectHideFlags: 0
