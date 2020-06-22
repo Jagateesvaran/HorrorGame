@@ -32,9 +32,7 @@ public class DebugScript : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown("r"))
-        {
-            Application.LoadLevel(1);
-        }
+       
+
     }
 }
