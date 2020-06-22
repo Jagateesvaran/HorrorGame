@@ -165,8 +165,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textBox: {fileID: 606706277}
-  dateDisplay: {fileID: 1033512974}
-  placeDisplay: {fileID: 1848774328}
+  dateDisplay: {fileID: 1848774328}
+  placeDisplay: {fileID: 1033512974}
   line01: {fileID: 749445897}
   line02: {fileID: 1164537843}
   line03: {fileID: 1598310649}
@@ -2347,7 +2347,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: October 27th, 2019
+  m_text: October 29th, 2008
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

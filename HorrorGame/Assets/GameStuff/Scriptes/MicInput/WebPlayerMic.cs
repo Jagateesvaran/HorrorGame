@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using TMPro;
 
 // Realtime Hearing AI -
 //
@@ -19,7 +20,8 @@ public class WebPlayerMic : MonoBehaviour {
 	// public Variables ---------------------------------------- Don't touch these unless you know what you are doing.
 	public int detail = 500; // -------------------------------- How much detail is in the sound?
 	public float minValue = 0.5f; // ----- ----------------------What's the minimum value?
-	public float amp = 0.5f; // -------------------------------- How much do we want to multiply the Package Data?
+	public float amp = 10f; // -------------------------------- How much do we want to multiply the Package Data?
+	public TextMeshProUGUI amptxt;
 	public string selectedDevice { get; private set; }	// ----- Search for a selected device;
 
 	// Audio Variables INTERNAL ONLY (Change at your own risk).
@@ -41,9 +43,11 @@ public class WebPlayerMic : MonoBehaviour {
 	string seletedInput;
 	string GobalInput;
 
+
 	public void Slider_Changed(float newValue)
 	{
 		amp = newValue;
+		amptxt.text = amp.ToString();
 	}
 
 

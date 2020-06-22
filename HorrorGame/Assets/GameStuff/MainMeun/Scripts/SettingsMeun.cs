@@ -10,8 +10,6 @@ public class SettingsMeun : MonoBehaviour
 
     public GameObject SettingsPanel;
 
-    public AudioMixer audioMixer;
-
     Resolution[] resolutions;
 
     public TMP_Dropdown resolutionDropDown;
@@ -58,21 +56,13 @@ public class SettingsMeun : MonoBehaviour
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
-    public void SetVolume(float volume)
-    {
-        audioMixer.SetFloat("volume", volume);
-        Debug.Log(volume);
-    }
-
+    
     public void SetQuality(int qualityIndex)
     {
         QualitySettings.SetQualityLevel(qualityIndex);
     }
 
 
-    public void SetFullScreen(bool isFullScreen)
-    {
-        Screen.fullScreen = isFullScreen;
-    }
+  
 
 }

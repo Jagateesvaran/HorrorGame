@@ -72,13 +72,7 @@ public class ScannerManager_MicInput : MonoBehaviour
 			{
 				StartCoroutine(CoroutineDecreaseRange());
 			}
-
-
-			//if (Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("d"))
-			//{
-			//	m_Range = Mathf.Lerp(m_Range, 5, lerpTime * Time.deltaTime);
-			//}
-		}
+        }
 		else if (EnableMic == false) // to make screen go crazy
 		{
 
@@ -162,13 +156,13 @@ public class ScannerManager_MicInput : MonoBehaviour
 		b_reduceRange = true;
 
 		//m_Range = Mathf.Lerp(m_Range, 30, lerpTime * Time.deltaTime);
-		m_Range = Mathf.Lerp(m_Range, 10, lerpTime * Time.deltaTime);
+		m_Range = Mathf.Lerp(m_Range, 15, lerpTime * Time.deltaTime);
 
 		//Print the time of when the function is first called.
 		//Debug.Log("Started Coroutine at timestamp : " + Time.time);
 
 		//yield on a new YieldInstruction that waits for 5 seconds.
-		yield return new WaitForSeconds(10);
+		yield return new WaitForSeconds(20);
 
 		//After we have waited 5 seconds print the time again.
 		//Debug.Log("Finished Coroutine at timestamp : " + Time.time);
