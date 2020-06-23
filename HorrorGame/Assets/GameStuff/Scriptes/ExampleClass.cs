@@ -53,7 +53,7 @@ public class ExampleClass : MonoBehaviour
         {
             isHolding = true;
             item.GetComponent<Rigidbody>().useGravity = false;
-            item.GetComponent<Rigidbody>().detectCollisions = true;
+            //item.GetComponent<Rigidbody>().detectCollisions = true;
         }
     }
     void OnMouseUp()
