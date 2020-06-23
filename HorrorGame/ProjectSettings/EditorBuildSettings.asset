@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/GameStuff/MainMeun/CutScene/CutScene.unity
     guid: 4f16477ec612c244f935ccb5959491b7
   - enabled: 1
-    path: Assets/GameStuff/Game.unity
+    path: Assets/GameStuff/LevelOne/Game.unity
     guid: 548c41b57904eeb4fbcff55c7c2961dc
   m_configObjects: {}
