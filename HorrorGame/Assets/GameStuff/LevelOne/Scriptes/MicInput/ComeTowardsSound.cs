@@ -24,17 +24,6 @@ public class ComeTowardsSound : MonoBehaviour {
 	public float TimeToSearch = 2.0f; // ----- How long do we want the enemy to chase us?
 	public float Speed; // ------------------- The speed at which the enemy will follow us (Change in Inspector).
 
-
-	public List<Transform> waypoints = new List<Transform>();
-	private Transform targetWaypoint;
-	private int targetWaypointIndex = 0;
-	private float minDistance = 0.2f;
-	private float lastWaypointIndex;
-
-	// Spawn Blood when ghost walking around every x seconds
-	public GameObject blood;
-
-
 	public Transform[] points;
 	private int destPoint = 0;
 	private NavMeshAgent agent;
@@ -65,7 +54,7 @@ public class ComeTowardsSound : MonoBehaviour {
 			agent.destination = player.position;
 			if (TimeToSearch <= 0){ // ------------------------------------------- If time reaches zero, then we are no longer chasing the player.
 				playerHeard = false; // --------------- Chasing player no longer happens.
-				TimeToSearch = 5.0f; // Revert back to our 5 seconds for next time.
+				TimeToSearch = 1.0f; // Revert back to our 5 seconds for next time.
 			}
 		}
 		else if (!playerHeard)

@@ -1,13 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class EndGame : MonoBehaviour
+public class GhostCollision : MonoBehaviour
 {
-
-    public GameObject Player;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -20,14 +16,14 @@ public class EndGame : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            SceneManager.LoadScene("LevelTwo");
-            //Player.GetComponent<CharacterController>().enabled = false;
-            Debug.Log("GameOver");
-           
+            Debug.Log("Ghost Hit Player");
+            this.gameObject.GetComponentInChildren<Camera>().enabled = true;
+            other.gameObject.GetComponentInChildren<Camera>().enabled = false;
         }
     }
+
 }

@@ -40,7 +40,6 @@ public class WebPlayerMic : MonoBehaviour {
 
 	public Dropdown dropdown;
 	List<string> micInputlist = new List<string>();
-	string seletedInput;
 	string GobalInput;
 
 
