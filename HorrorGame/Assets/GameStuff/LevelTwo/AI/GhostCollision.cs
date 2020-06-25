@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class GhostCollision : MonoBehaviour
 {
+
+
+
+    public Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +28,9 @@ public class GhostCollision : MonoBehaviour
             Debug.Log("Ghost Hit Player");
             this.gameObject.GetComponentInChildren<Camera>().enabled = true;
             other.gameObject.GetComponentInChildren<Camera>().enabled = false;
+            other.gameObject.GetComponentInChildren<CharacterController>().enabled = false;
+            animator.SetBool("isWalking", false);
+
         }
     }
 

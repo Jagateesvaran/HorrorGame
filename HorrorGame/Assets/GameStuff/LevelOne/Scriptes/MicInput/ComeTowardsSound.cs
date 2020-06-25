@@ -18,7 +18,8 @@ using UnityEngine.AI;
 public class ComeTowardsSound : MonoBehaviour {
 	// This is a very basic AI that gets alerted to the noise.
 	// and chases the player around for 5 seconds.
-	
+
+
 	public Transform player; // -------------- Be sure to drop your player into the Inspector Slot.
 	public bool playerHeard; // -------------- This is a bool that gets triggered if the trigger hits the enemy.
 	public float TimeToSearch = 2.0f; // ----- How long do we want the enemy to chase us?
@@ -29,9 +30,14 @@ public class ComeTowardsSound : MonoBehaviour {
 	private NavMeshAgent agent;
 
 
+	public Animator animator;
+
 
 	private void Start()
 	{
+
+		animator.SetBool("isWalking", true);
+
 		playerHeard = false;
 		//targetWaypoint = waypoints[targetWaypointIndex];
 
@@ -51,6 +57,8 @@ public class ComeTowardsSound : MonoBehaviour {
 			TimeToSearch -= Time.deltaTime;// ----------------------------------- Deduct time for finding player.
 			//transform.LookAt(player); // ---------------------------------------- Always face the player (This is just for basic AI Guys).
 			//transform.Translate(Vector3.forward * Speed * Time.deltaTime); // --- Chase our player at our Speed float.
+
+			// go to the place the player is ones is found
 			agent.destination = player.position;
 			if (TimeToSearch <= 0){ // ------------------------------------------- If time reaches zero, then we are no longer chasing the player.
 				playerHeard = false; // --------------- Chasing player no longer happens.
