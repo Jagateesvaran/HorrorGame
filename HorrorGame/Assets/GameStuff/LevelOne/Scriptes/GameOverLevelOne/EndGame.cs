@@ -25,8 +25,7 @@ public class EndGame : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             SceneManager.LoadScene("LevelTwo");
-            //Player.GetComponent<CharacterController>().enabled = false;
-            Debug.Log("GameOver");
+            Debug.Log("Loading Level Two");
            
         }
     }

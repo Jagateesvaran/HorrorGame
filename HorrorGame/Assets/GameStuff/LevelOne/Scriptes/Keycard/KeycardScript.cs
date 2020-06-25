@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
 
 public class KeycardScript : MonoBehaviour
@@ -7,6 +6,8 @@ public class KeycardScript : MonoBehaviour
 
     public GameObject PickupText;
     public KeyCardManager keyCard;
+
+    public TextMeshProUGUI objectiveTxt;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,7 @@ public class KeycardScript : MonoBehaviour
             if (Input.GetKeyDown("e"))
             {
                 keyCard.YellowKeyCard = true;
+                objectiveTxt.text = "Escape through the Green Door";
                 Destroy(this.gameObject);
             }
         }
