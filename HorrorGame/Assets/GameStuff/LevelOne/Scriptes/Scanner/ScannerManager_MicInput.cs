@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
-
+using TMPro;
 
 public class ScannerManager_MicInput : MonoBehaviour
 {
@@ -38,6 +38,9 @@ public class ScannerManager_MicInput : MonoBehaviour
 
 	public bool EnableMic;
 
+	
+
+
 
 	void Start()
 	{
@@ -61,32 +64,40 @@ public class ScannerManager_MicInput : MonoBehaviour
 		for (int i = 0; i < m_Fxs.Length; i++)
 			m_Fxs[i].Initialize();
 
+		Debug.Log(mic.volumeinput + "volumeInput");
+		// Version One
 
-		if (EnableMic == true)
-		{
-			if (mic.volumeinput >= 10 && m_Range != 30)
-			{
-				StartCoroutine(CoroutineIncreaseRange());
-			}
-			else if (b_reduceRange == false)
-			{
-				StartCoroutine(CoroutineDecreaseRange());
-			}
-        }
-		else if (EnableMic == false) // to make screen go crazy
-		{
-
-			m_Amplitude = 2f;
-			m_Exp = 3f;
-			m_Interval = 5f;
-			m_Speed = 5f;
-			m_Range = 25;
-
-		}
+		m_Range = Mathf.Lerp(m_Range, mic.volumeinput, lerpTime * Time.deltaTime);
 
 
 
-		for (int i = 0; i < m_Fxs.Length; i++)
+        // Version Two
+
+        //if (EnableMic == true)
+        //{
+        //    if (mic.volumeinput >= 10 && m_Range != 30)
+        //    {
+        //        StartCoroutine(CoroutineIncreaseRange());
+        //    }
+        //    else if (b_reduceRange == false)
+        //    {
+        //        StartCoroutine(CoroutineDecreaseRange());
+        //    }
+        //}
+        //else if (EnableMic == false) // to make screen go crazy
+        //{
+
+        //    m_Amplitude = 2f;
+        //    m_Exp = 3f;
+        //    m_Interval = 5f;
+        //    m_Speed = 5f;
+        //    m_Range = 25;
+
+        //}
+
+
+
+        for (int i = 0; i < m_Fxs.Length; i++)
 		{
 
 			if (m_Fxs[i] == null)
