@@ -5,6 +5,8 @@ using UnityEngine;
 public class PickupObject : MonoBehaviour
 {
 
+	// Use the PickAble
+
 	GameObject mainCamera;
 	bool carrying;
 	GameObject carriedObject;
@@ -24,6 +26,13 @@ public class PickupObject : MonoBehaviour
 			carry(carriedObject);
 			checkDrop();
 			//rotateObject();
+
+			if (Input.GetMouseButtonDown(0))
+            {
+				carriedObject.GetComponent<Rigidbody>().AddForce(mainCamera.transform.forward * 600);
+				dropObject();
+			}
+
 		}
 		else
 		{

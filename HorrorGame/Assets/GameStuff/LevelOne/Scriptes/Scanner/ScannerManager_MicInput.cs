@@ -122,23 +122,23 @@ public class ScannerManager_MicInput : MonoBehaviour
 				m_Emitters[0].range = m_Range;
 
 
-				for (int j = 1; j < m_Emitters.Length; j++)
-				{
-					// when the object has no velocity it set the range to zero and if moving the range to 20
-					if (m_Emitters[j].emitter.gameObject.GetComponent<Rigidbody>().velocity == new Vector3(0, 0, 0) && m_Emitters[j].ScanEffectOn == false)
-					{
-						StartCoroutine(CoroutineDecreaseRangeObjects(j));
-					}
-					else 
-					{
-						StartCoroutine(CoroutineIncreaseRangeObjects(j));
+                for (int j = 1; j < m_Emitters.Length; j++)
+                {
+                    // when the object has no velocity it set the range to zero and if moving the range to 20
+                    if (m_Emitters[j].emitter.gameObject.GetComponent<Rigidbody>().velocity == new Vector3(0, 0, 0) && m_Emitters[j].ScanEffectOn == false)
+                    {
+                        StartCoroutine(CoroutineDecreaseRangeObjects(j));
+                    }
+                    else
+                    {
+                        StartCoroutine(CoroutineIncreaseRangeObjects(j));
 
-					}
-				}
-				
-				
+                    }
+                }
 
-				for (int j = 0; j < EMITTER_COUNT; ++j)
+
+
+                for (int j = 0; j < EMITTER_COUNT; ++j)
 				{
 					if (j >= m_Emitters.Length) break;
 					emitterPositions.Add(m_Emitters[j].emitter.transform.position);
@@ -201,7 +201,7 @@ public class ScannerManager_MicInput : MonoBehaviour
 	{
 
 		m_Emitters[index].ScanEffectOn = true;
-		m_Emitters[index].range = Mathf.Lerp(m_Emitters[index].range, 5, lerpTime * Time.deltaTime);
+		m_Emitters[index].range = Mathf.Lerp(m_Emitters[index].range, 7, lerpTime * Time.deltaTime);
 		
 		yield return new WaitForSeconds(3);
 		m_Emitters[index].ScanEffectOn = false;
