@@ -201,7 +201,7 @@ public class ScannerManager_MicInput : MonoBehaviour
 	{
 
 		m_Emitters[index].ScanEffectOn = true;
-		m_Emitters[index].range = Mathf.Lerp(m_Emitters[index].range, 7, lerpTime * Time.deltaTime);
+		m_Emitters[index].range = Mathf.Lerp(m_Emitters[index].range, 10, lerpTime * Time.deltaTime);
 		
 		yield return new WaitForSeconds(3);
 		m_Emitters[index].ScanEffectOn = false;
@@ -211,7 +211,7 @@ public class ScannerManager_MicInput : MonoBehaviour
 
 	IEnumerator CoroutineDecreaseRangeObjects(int index)
 	{
-		m_Emitters[index].range = Mathf.Lerp(m_Emitters[index].range, 0, lerpTime * Time.deltaTime);
+		m_Emitters[index].range = Mathf.Lerp(m_Emitters[index].range, 3, lerpTime * Time.deltaTime);
 
 		yield return new WaitForSeconds(1);
 

@@ -12,8 +12,36 @@ public class PickupObject : MonoBehaviour
 	GameObject carriedObject;
 	public float distance;
 	public float smooth;
-	// Use this for initialization
-	void Start()
+
+	public bool inRange = false;
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Throwable"))
+        {
+			inRange = true;
+		}	
+    }
+
+	private void OnTriggerStay(Collider other)
+	{
+		if (other.gameObject.CompareTag("Throwable"))
+		{
+			inRange = true;
+		}
+	}
+
+	private void OnTriggerExit(Collider other)
+    {
+		if (other.gameObject.CompareTag("Throwable"))
+		{
+			inRange = false;
+		}
+	}
+
+    // Use this for initialization
+    void Start()
 	{
 		mainCamera = GameObject.FindWithTag("MainCamera");
 	}
@@ -29,7 +57,7 @@ public class PickupObject : MonoBehaviour
 
 			if (Input.GetMouseButtonDown(0))
             {
-				carriedObject.GetComponent<Rigidbody>().AddForce(mainCamera.transform.forward * 600);
+				carriedObject.GetComponent<Rigidbody>().AddForce(mainCamera.transform.forward * 800);
 				dropObject();
 			}
 
@@ -53,7 +81,7 @@ public class PickupObject : MonoBehaviour
 
 	void pickup()
 	{
-		if (Input.GetKeyDown(KeyCode.E))
+		if (Input.GetKeyDown(KeyCode.E) && inRange)
 		{
 			int x = Screen.width / 2;
 			int y = Screen.height / 2;

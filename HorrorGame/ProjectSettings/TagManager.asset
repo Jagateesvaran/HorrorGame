@@ -13,6 +13,9 @@ TagManager:
   - Monster
   - Item
   - Press
+  - pickto
+  - Throwable
+  - collectible
   layers:
   - Default
   - TransparentFX
