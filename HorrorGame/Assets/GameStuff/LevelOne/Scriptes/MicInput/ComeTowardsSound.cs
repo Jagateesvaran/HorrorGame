@@ -25,7 +25,7 @@ public class ComeTowardsSound : MonoBehaviour {
 	public float TimeToSearch = 2.0f; // ----- How long do we want the enemy to chase us?
 	public float Speed; // ------------------- The speed at which the enemy will follow us (Change in Inspector).
 
-	public Transform[] points;
+	private GameObject[] points;
 	private int destPoint = 0;
 	private NavMeshAgent agent;
 
@@ -47,6 +47,9 @@ public class ComeTowardsSound : MonoBehaviour {
 		// between points (ie, the agent doesn't slow down as it
 		// approaches a destination point).
 		agent.autoBraking = false;
+
+		points = GameObject.FindGameObjectsWithTag("walkPoints");
+
 
 		GotoNextPoint();
 	}
@@ -131,7 +134,7 @@ public class ComeTowardsSound : MonoBehaviour {
 			return;
 
 		// Set the agent to go to the currently selected destination.
-		agent.destination = points[destPoint].position;
+		agent.destination = points[destPoint].gameObject.transform.position;
 
 		// Choose the next point in the array as the destination,
 		// cycling to the start if necessary.

@@ -67,7 +67,24 @@ public class ScannerManager_MicInput : MonoBehaviour
 		//Debug.Log(mic.volumeinput + "volumeInput");
 		// Version One
 
-		m_Range = Mathf.Lerp(m_Range, mic.volumeinput, lerpTime * Time.deltaTime);
+		//m_Range = Mathf.Lerp(m_Range, mic.volumeinput, lerpTime * Time.deltaTime);
+
+
+
+        if (EnableMic == true)
+        {
+			m_Range = Mathf.Lerp(m_Range, mic.volumeinput, lerpTime * Time.deltaTime);
+		}
+        else if (EnableMic == false) // to make screen go crazy
+        {
+
+            m_Amplitude = 2f;
+            m_Exp = 3f;
+            m_Interval = 5f;
+            m_Speed = 5f;
+            m_Range = 25;
+
+        }
 
 
 

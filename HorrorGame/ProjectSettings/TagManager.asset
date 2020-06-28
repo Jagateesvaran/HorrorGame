@@ -16,6 +16,7 @@ TagManager:
   - pickto
   - Throwable
   - collectible
+  - walkPoints
   layers:
   - Default
   - TransparentFX
