@@ -20,7 +20,7 @@ public class GhostCollision : MonoBehaviour
     {
         if (istrigger == true)
         {
-            StartCoroutine(coroutineA());
+            StartCoroutine(DieCoroutine());
            
         }
     }
@@ -30,6 +30,7 @@ public class GhostCollision : MonoBehaviour
         if (other.gameObject.CompareTag("Player") && istrigger == false)
         {
             Debug.Log("Ghost Hit Player");
+            Destroy(other.gameObject);
             this.gameObject.GetComponentInChildren<Camera>().enabled = true;
             this.gameObject.GetComponent<NavMeshAgent>().speed = 0;
             other.gameObject.GetComponentInChildren<Camera>().enabled = false;
@@ -38,7 +39,7 @@ public class GhostCollision : MonoBehaviour
             istrigger = true;
         }
     }
-    IEnumerator coroutineA()
+    IEnumerator DieCoroutine()
     {
         // wait for 1 second
         yield return new WaitForSeconds(4.0f);

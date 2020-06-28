@@ -32,6 +32,10 @@ public class ComeTowardsSound : MonoBehaviour {
 
 	public Animator animator;
 
+	// Audio 
+	public AudioSource seeYouAudio;
+	public AudioClip seeYouClip;
+	public bool alreadyPlayed = false;
 
 	private void Start()
 	{
@@ -56,12 +60,21 @@ public class ComeTowardsSound : MonoBehaviour {
 
 
 	void Update(){
+
+		// Play Audio Of I See u
+        if (!alreadyPlayed && playerHeard)
+        {
+			seeYouAudio.PlayOneShot(seeYouClip);
+			alreadyPlayed = true;
+		}
+
 		if (playerHeard) { // --------------------------------------------------- If the player is heard, do the following.
+
 			TimeToSearch -= Time.deltaTime;// ----------------------------------- Deduct time for finding player.
 			//transform.LookAt(player); // ---------------------------------------- Always face the player (This is just for basic AI Guys).
 			//transform.Translate(Vector3.forward * Speed * Time.deltaTime); // --- Chase our player at our Speed float.
-
 			// go to the place the player is ones is found
+
 			agent.destination = player.position;
 			if (TimeToSearch <= 0){ // ------------------------------------------- If time reaches zero, then we are no longer chasing the player.
 				playerHeard = false; // --------------- Chasing player no longer happens.
@@ -70,16 +83,16 @@ public class ComeTowardsSound : MonoBehaviour {
 		}
 		else if (!playerHeard)
 		{
-			//float movementStep = Speed * Time.deltaTime;
 
+			alreadyPlayed = false;
+
+			//float movementStep = Speed * Time.deltaTime;
 			//float distance = Vector3.Distance(transform.position, targetWaypoint.position);
 			//CheckDistanceToWaypoint(distance);
-
-
 			//transform.position = Vector3.MoveTowards(transform.position, targetWaypoint.position, movementStep);
-
 			// Choose the next destination point when the agent gets
 			// close to the current one.
+
 			if (!agent.pathPending && agent.remainingDistance < 0.5f)
 				GotoNextPoint();
 		}
