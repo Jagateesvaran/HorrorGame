@@ -9,6 +9,8 @@ public class CollectibleTrigger : MonoBehaviour
     public CollectibleManager collectibleManager;
     public GameObject threeD_text;
 
+    public AudioSource audioSourceEvilLaugh;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,15 @@ public class CollectibleTrigger : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+       
+        if (other.gameObject.CompareTag("Player"))
+        {
+            audioSourceEvilLaugh.Play();
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -46,6 +57,5 @@ public class CollectibleTrigger : MonoBehaviour
     private void OnDestroy()
     {
         collectibleManager.UpdateGoalUI(1);
-
     }
 }
