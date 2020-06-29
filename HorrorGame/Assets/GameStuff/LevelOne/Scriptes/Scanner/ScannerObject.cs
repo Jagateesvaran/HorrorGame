@@ -23,11 +23,10 @@ namespace Scanner
 		public Texture[] m_TexBump;
 
 		// set Color Red
-
-		public void SetColorSweepRed()
-        {
-			m_Color = new Color(255, 255 , 255);
-		}
+		//public void SetColorSweepRed(int r, int g, int b)
+  //      {
+		//	m_Color = new Color(r, g, b);
+		//}
 
 	
 		public void Initialize ()
