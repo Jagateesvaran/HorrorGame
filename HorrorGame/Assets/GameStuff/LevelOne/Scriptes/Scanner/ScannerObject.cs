@@ -22,6 +22,14 @@ namespace Scanner
 		public Texture[] m_TexDiffuse;
 		public Texture[] m_TexBump;
 
+		// set Color Red
+
+		public void SetColorSweepRed()
+        {
+			m_Color = new Color(255, 255 , 255);
+		}
+
+	
 		public void Initialize ()
 		{
 			// cache the renderer
