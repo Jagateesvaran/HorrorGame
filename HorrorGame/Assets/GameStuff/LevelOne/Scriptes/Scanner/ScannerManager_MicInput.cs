@@ -38,10 +38,6 @@ public class ScannerManager_MicInput : MonoBehaviour
 
 	public bool EnableMic;
 
-	
-
-
-
 	void Start()
 	{
 		EnableMic = true;
