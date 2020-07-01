@@ -31,6 +31,7 @@ public class GhostCollision : MonoBehaviour
         if (other.gameObject.CompareTag("Player") && istrigger == false)
         {
             Debug.Log("Ghost Hit Player");
+            ghostScreaming.Play();
             Destroy(other.gameObject);
             this.gameObject.GetComponentInChildren<Camera>().enabled = true;
             this.gameObject.GetComponent<NavMeshAgent>().speed = 0;
@@ -42,8 +43,8 @@ public class GhostCollision : MonoBehaviour
     }
     IEnumerator DieCoroutine()
     {
-        ghostScreaming.Play();
         yield return new WaitForSeconds(4.0f);
+        ghostScreaming.Stop();
         DiePanel.SetActive(true);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
