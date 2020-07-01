@@ -8,6 +8,7 @@ public class GhostCollision : MonoBehaviour
     public GameObject DiePanel;
     public Animator animator;
     public bool istrigger;
+    public AudioSource ghostScreaming;
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +42,7 @@ public class GhostCollision : MonoBehaviour
     }
     IEnumerator DieCoroutine()
     {
-        // wait for 1 second
+        ghostScreaming.Play();
         yield return new WaitForSeconds(4.0f);
         DiePanel.SetActive(true);
         Cursor.visible = true;
