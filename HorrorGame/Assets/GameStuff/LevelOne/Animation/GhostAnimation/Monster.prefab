@@ -1820,7 +1820,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 8354703861718019206, guid: df86a0ce5d2f1bf4f905d0e4e23fe4b1, type: 3}
+  m_Mesh: {fileID: 8354703861718019206, guid: f9797e2fe5bcf284da7b7b2651986610, type: 3}
   m_Bones:
   - {fileID: 6191001000149000620}
   - {fileID: 1137135155038808692}
@@ -1893,11 +1893,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Standard: {fileID: 4800000, guid: babaaa15d6dbc9348b7b285091efcfae, type: 3}
-  m_Transparency: {fileID: 4800000, guid: 8b77d81f0d4b5e944bec46b1d72f5e14, type: 3}
-  m_TransparencyTextured: {fileID: 4800000, guid: a2571259b99a1b04bb4e2dee1474e06d,
-    type: 3}
-  m_TransparencyStripe: {fileID: 4800000, guid: fe531002a791f6143a7087ee8204116e,
-    type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_StripeTex: {fileID: 2800000, guid: 52f633b7c9c0a49429d694c9a9d4e20d, type: 3}
   m_StripeWidth: 0.1
