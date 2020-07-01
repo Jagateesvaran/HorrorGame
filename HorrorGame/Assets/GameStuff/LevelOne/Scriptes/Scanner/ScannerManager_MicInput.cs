@@ -38,6 +38,10 @@ public class ScannerManager_MicInput : MonoBehaviour
 
 	public bool EnableMic;
 
+	
+
+
+
 	void Start()
 	{
 		EnableMic = true;
@@ -60,7 +64,7 @@ public class ScannerManager_MicInput : MonoBehaviour
 		for (int i = 0; i < m_Fxs.Length; i++)
 			m_Fxs[i].Initialize();
 
-		Debug.Log(mic.volumeinput + "volumeInput");
+		//Debug.Log(mic.volumeinput + "volumeInput");
 		// Version One
 
 		//m_Range = Mathf.Lerp(m_Range, mic.volumeinput, lerpTime * Time.deltaTime);

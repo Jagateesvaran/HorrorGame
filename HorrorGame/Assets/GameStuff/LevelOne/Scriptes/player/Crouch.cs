@@ -21,7 +21,7 @@ public class Crouch : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.C))
         {
-            characterController.height = 0.8f;
+            characterController.height = 1.0f;
             firstPerson.m_WalkSpeed = 2.5f;
         }
 

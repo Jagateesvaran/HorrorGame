@@ -22,32 +22,29 @@ namespace Scanner
 		public Texture[] m_TexDiffuse;
 		public Texture[] m_TexBump;
 
-<<<<<<< HEAD
-        public void HandleInputColor(int val)
-        {
-            if (val == 0)
-            {
-                m_Color = Color.red;
-            }
-            else if (val == 1)
-            {
-                m_Color = Color.blue;
-            }
-            else if (val == 2)
-            {
-                m_Color = Color.green;
-            }
-            else if (val == 3)
-            {
-                m_Color = Color.white;
-            }
-        }
 
 
-        public void Initialize ()
-=======
+		public void SetColorForScan(int val)
+		{
+			if (val == 0)
+			{
+				m_Color = Color.white;
+			}
+			else if (val == 1)
+			{
+				m_Color = Color.red;
+			}
+			else if (val == 2)
+			{
+				m_Color = Color.blue;
+			}
+			else if (val == 3)
+			{
+				m_Color = Color.green;
+			}
+		
+		}
 		public void Initialize ()
->>>>>>> parent of 3a1cb8c... Add in color picker tmr in class
 		{
 			// cache the renderer
 			m_Rd = GetComponent<Renderer> ();
