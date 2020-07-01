@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PickupObject : MonoBehaviour
 {
@@ -8,15 +9,19 @@ public class PickupObject : MonoBehaviour
 	// Use the PickAble
 
 	GameObject mainCamera;
-	bool carrying;
+	public bool carrying;
 	GameObject carriedObject;
 	public float distance;
 	public float smooth;
 
 	public bool inRange = false;
 
+	public TextMeshProUGUI pickUpText;
+	public TextMeshProUGUI throwText;
 
-    private void OnTriggerEnter(Collider other)
+
+
+	private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Throwable"))
         {
@@ -49,6 +54,17 @@ public class PickupObject : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+
+        if (inRange)
+        {
+			pickUpText.enabled = true;
+        }
+        else
+        {
+			pickUpText.enabled = false;
+		}
+		
+
 		if (carrying)
 		{
 			carry(carriedObject);
@@ -57,6 +73,7 @@ public class PickupObject : MonoBehaviour
 
 			if (Input.GetMouseButtonDown(0))
             {
+				throwText.enabled = false;
 				carriedObject.GetComponent<Rigidbody>().AddForce(mainCamera.transform.forward * 800);
 				dropObject();
 			}
@@ -75,6 +92,7 @@ public class PickupObject : MonoBehaviour
 
 	void carry(GameObject o)
 	{
+		pickUpText.enabled = false;
 		o.transform.position = Vector3.Lerp(o.transform.position, mainCamera.transform.position + mainCamera.transform.forward * distance, Time.deltaTime * smooth);
 		o.transform.rotation = Quaternion.identity;
 	}
@@ -83,6 +101,7 @@ public class PickupObject : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.E) && inRange)
 		{
+			throwText.enabled = true;
 			int x = Screen.width / 2;
 			int y = Screen.height / 2;
 

@@ -6815,7 +6815,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1330179400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7745,7 +7745,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -8382,8 +8382,8 @@ RectTransform:
   m_Father: {fileID: 579010002}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.1, y: 0}
+  m_AnchorMax: {x: 0.1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -9140,7 +9140,7 @@ Transform:
   m_GameObject: {fileID: 1883914396}
   m_LocalRotation: {x: -0, y: -0.029009726, z: -0, w: 0.9995792}
   m_LocalPosition: {x: 1.0251368, y: -1.13, z: -0.79}
-  m_LocalScale: {x: 0.17271395, y: 0.095142074, z: 0.40060169}
+  m_LocalScale: {x: 0.04020695, y: 0.03610734, z: 0.15203221}
   m_Children: []
   m_Father: {fileID: 1514897857176839451}
   m_RootOrder: 0
@@ -9160,7 +9160,7 @@ TextMesh:
   m_Anchor: 0
   m_Alignment: 0
   m_TabSize: 4
-  m_FontSize: 15
+  m_FontSize: 64
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
@@ -12350,7 +12350,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8296172669435630688}
   m_LocalRotation: {x: -0, y: 0.21968009, z: -0, w: 0.97557205}
-  m_LocalPosition: {x: 39.89, y: -6.343313, z: 3.89}
+  m_LocalPosition: {x: 39.89, y: -5.981, z: 3.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6491466423008725972}
@@ -12456,7 +12456,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3579108319595051804, guid: 0d5a62b9f49102343aa3bb179173185b, type: 3}
+  - {fileID: 5561349426305759274, guid: 80b6331a9a88a9d4d9e696c3e7385d83, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

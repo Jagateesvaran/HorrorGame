@@ -39,7 +39,6 @@ public class WebPlayerMic : MonoBehaviour {
 	//---------------------------------------------------------------------------------------------------------------------------------
 
 	public TMP_Dropdown dropdownTMP;
-	public Dropdown dropdown;
 	List<string> micInputlist = new List<string>();
 	string GobalInput;
 
@@ -62,7 +61,6 @@ public class WebPlayerMic : MonoBehaviour {
 			micInputlist.Add(Microphone.devices[i].ToString());
 		}
 		dropdownTMP.AddOptions(micInputlist);
-		dropdown.AddOptions(micInputlist);
 
 		StopMicrophone();
 		selectedDevice = Microphone.devices[0].ToString();

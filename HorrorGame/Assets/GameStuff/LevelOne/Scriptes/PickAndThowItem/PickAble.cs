@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using Unity.Collections.LowLevel.Unsafe;
 
 public class PickAble : MonoBehaviour
 {
+
     // Start is called before the first frame update
     void Start()
     {
@@ -11,8 +14,18 @@ public class PickAble : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update()   
     {
-        
+     
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+      
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+       
     }
 }
