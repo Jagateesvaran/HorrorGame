@@ -22,6 +22,7 @@ namespace Scanner
 		public Texture[] m_TexDiffuse;
 		public Texture[] m_TexBump;
 
+<<<<<<< HEAD
         public void HandleInputColor(int val)
         {
             if (val == 0)
@@ -44,6 +45,9 @@ namespace Scanner
 
 
         public void Initialize ()
+=======
+		public void Initialize ()
+>>>>>>> parent of 3a1cb8c... Add in color picker tmr in class
 		{
 			// cache the renderer
 			m_Rd = GetComponent<Renderer> ();

@@ -1737,6 +1737,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 267408621}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+<<<<<<< HEAD
 --- !u!1 &282928872
 GameObject:
   m_ObjectHideFlags: 0
@@ -1814,6 +1815,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 282928872}
   m_CullTransparentMesh: 0
+=======
+>>>>>>> parent of 3a1cb8c... Add in color picker tmr in class
 --- !u!1 &384317677
 GameObject:
   m_ObjectHideFlags: 0
@@ -3879,10 +3882,23 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
+<<<<<<< HEAD
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &823506012
+=======
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48250f0f5678f5c428cf1d604f26d243, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 504485808451893709}
+  playerHeard: 0
+  TimeToSearch: 2
+  Speed: 2
+  animator: {fileID: 0}
+--- !u!23 &864094840
+>>>>>>> parent of 3a1cb8c... Add in color picker tmr in class
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4293,8 +4309,8 @@ MonoBehaviour:
   m_Direction: 0
   m_MinValue: 0
   m_MaxValue: 10
-  m_WholeNumbers: 1
-  m_Value: 0
+  m_WholeNumbers: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -5576,7 +5592,10 @@ RectTransform:
   - {fileID: 453441670}
   - {fileID: 395435881}
   - {fileID: 457437518}
+<<<<<<< HEAD
   - {fileID: 1838034071}
+=======
+>>>>>>> parent of 3a1cb8c... Add in color picker tmr in class
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6344,7 +6363,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0.1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6774,8 +6793,8 @@ RectTransform:
   m_Father: {fileID: 579010002}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0.1, y: 0}
+  m_AnchorMax: {x: 0.1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -8618,6 +8637,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   YellowKeyCard: 0
+<<<<<<< HEAD
 --- !u!114 &2073932049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8631,6 +8651,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MicPanel: {fileID: 1634101026}
+=======
+>>>>>>> parent of 3a1cb8c... Add in color picker tmr in class
 --- !u!4 &62148450069248881
 Transform:
   m_ObjectHideFlags: 0
@@ -8882,7 +8904,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.01
+  near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -9781,7 +9803,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Standard: {fileID: 4800000, guid: babaaa15d6dbc9348b7b285091efcfae, type: 3}
-  m_Color: {r: 0.04585886, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.069517374, g: 1, b: 0, a: 1}
   m_StripeTex: {fileID: 2800000, guid: 52f633b7c9c0a49429d694c9a9d4e20d, type: 3}
   m_StripeWidth: 0.24
   m_StripeDensity: 2.7
@@ -10265,7 +10287,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3737117277681266176}
-  m_Material: {fileID: 13400000, guid: 869ee2c4a8b0299448febf01daa753c8, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
