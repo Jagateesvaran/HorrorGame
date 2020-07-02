@@ -29,7 +29,11 @@ public class InstructionBtn : MonoBehaviour
         InstructionPanel.SetActive(false);
     }
 
-
+    public void OpenURL()
+    {
+        Application.OpenURL("https://forms.gle/itWAx1N34naTu8SG6");
+        Debug.Log("is this working?");
+    }
 
 
 }

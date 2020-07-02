@@ -2209,7 +2209,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2073932044}
-        m_MethodName: QuitButton
+        m_MethodName: MainMeunButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2983,9 +2983,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Quit
-
-'
+  m_text: Main Meun
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3054,10 +3052,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 528382683}
-    characterCount: 5
+    characterCount: 9
     spriteCount: 0
     spaceCount: 1
-    wordCount: 1
+    wordCount: 2
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -3292,7 +3290,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &551173923
 Light:
   m_ObjectHideFlags: 0
@@ -10176,7 +10174,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2073932045}
   - component: {fileID: 2073932044}
-  - component: {fileID: 2073932047}
   - component: {fileID: 2073932048}
   - component: {fileID: 2073932046}
   m_Layer: 0
@@ -10234,19 +10231,6 @@ MonoBehaviour:
   - {fileID: 1185854569}
   - {fileID: 1337426709}
   - {fileID: 1802650303}
---- !u!114 &2073932047
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2073932043}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c950de79a58b784db31237649538a05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  directionalLight: {fileID: 551173922}
 --- !u!114 &2073932048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10497,7 +10481,7 @@ Camera:
   m_GameObject: {fileID: 504485808452380141}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0.019607844}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
