@@ -84,7 +84,6 @@ public class ComeTowardsSound : MonoBehaviour {
 		else if (!playerHeard)
 		{
 
-			alreadyPlayed = false;
 
 			//float movementStep = Speed * Time.deltaTime;
 			//float distance = Vector3.Distance(transform.position, targetWaypoint.position);
@@ -94,7 +93,10 @@ public class ComeTowardsSound : MonoBehaviour {
 			// close to the current one.
 
 			if (!agent.pathPending && agent.remainingDistance < 0.5f)
+            {
 				GotoNextPoint();
+				alreadyPlayed = false;
+			}
 		}
 
 

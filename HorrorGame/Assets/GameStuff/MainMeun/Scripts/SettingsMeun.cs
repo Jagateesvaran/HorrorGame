@@ -62,7 +62,7 @@ public class SettingsMeun : MonoBehaviour
         QualitySettings.SetQualityLevel(qualityIndex);
     }
 
-
+    
   
 
 }

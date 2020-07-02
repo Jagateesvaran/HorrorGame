@@ -32,6 +32,7 @@ public class GhostCollision : MonoBehaviour
             Debug.Log("Ghost Hit Player");
             Destroy(other.gameObject);
             this.gameObject.GetComponentInChildren<Camera>().enabled = true;
+            this.gameObject.GetComponentInChildren<AudioListener>().enabled = true;
             this.gameObject.GetComponent<NavMeshAgent>().speed = 0;
             other.gameObject.GetComponentInChildren<Camera>().enabled = false;
             other.gameObject.GetComponentInChildren<CharacterController>().enabled = false;
