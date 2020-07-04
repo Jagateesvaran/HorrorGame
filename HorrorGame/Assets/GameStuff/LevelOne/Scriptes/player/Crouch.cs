@@ -21,14 +21,14 @@ public class Crouch : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.C))
         {
-            characterController.height = 1.0f;
-            firstPerson.m_WalkSpeed = 2.5f;
+            characterController.height = 0.5f;
+            firstPerson.m_WalkSpeed = 1.5f;
         }
 
         if (Input.GetKeyUp(KeyCode.C))
         {
-            characterController.height = 1.8f;
-            firstPerson.m_WalkSpeed = 5;
+            characterController.height = 2f;
+            firstPerson.m_WalkSpeed = 2;
         }
     }
 }

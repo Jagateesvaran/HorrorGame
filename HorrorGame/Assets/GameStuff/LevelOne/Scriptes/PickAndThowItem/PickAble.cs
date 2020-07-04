@@ -19,13 +19,4 @@ public class PickAble : MonoBehaviour
      
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-      
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-       
-    }
 }
