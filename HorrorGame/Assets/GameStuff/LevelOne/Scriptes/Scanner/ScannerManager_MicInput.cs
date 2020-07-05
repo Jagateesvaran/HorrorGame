@@ -65,7 +65,15 @@ public class ScannerManager_MicInput : MonoBehaviour
 			m_Fxs[i].Initialize();
 
 
-		m_Range = Mathf.Lerp(m_Range, mic.volumeinput, lerpTime * Time.deltaTime);
+
+        if (Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("d")  )
+        {
+			m_Range = Mathf.Lerp(m_Range, 5, lerpTime * Time.deltaTime);
+		}
+		else
+        {
+			m_Range = Mathf.Lerp(m_Range, mic.volumeinput, lerpTime * Time.deltaTime);
+		}
 
 		//Debug.Log(mic.volumeinput + "volumeInput");
 		// Version One

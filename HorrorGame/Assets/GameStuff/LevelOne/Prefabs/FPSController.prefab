@@ -204,6 +204,7 @@ GameObject:
   - component: {fileID: 57556539414793609}
   - component: {fileID: 57556539417878915}
   - component: {fileID: 57556539420819205}
+  - component: {fileID: 583069137}
   m_Layer: 0
   m_Name: MicrophoneInput
   m_TagString: SoundZone
@@ -382,6 +383,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &583069137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57556539425971753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd4180186ffe51545923bf2c143e6d1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  source: {fileID: 57556539417878915}
 --- !u!1 &57556539808411310
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,7 +579,6 @@ GameObject:
   - component: {fileID: 561877334051367595}
   - component: {fileID: 561877334045275787}
   - component: {fileID: 561877334057646285}
-  - component: {fileID: 561877334050121866}
   m_Layer: 0
   m_Name: FirstPersonCharacterCam
   m_TagString: MainCamera
@@ -647,22 +660,6 @@ Behaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 561877334050121865}
   m_Enabled: 1
---- !u!114 &561877334050121866
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 561877334050121865}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ab8353b5ebd32545867da143199a814, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DefaultPosInfluence: {x: 0.15, y: 0.15, z: 0.15}
-  DefaultRotInfluence: {x: 1, y: 1, z: 1}
-  RestPositionOffset: {x: 0, y: 0, z: 0}
-  RestRotationOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &561877334050121867
 GameObject:
   m_ObjectHideFlags: 0
@@ -841,8 +838,11 @@ MonoBehaviour:
   m_FootstepSounds:
   - {fileID: 8300000, guid: 42e65e088b3f4374e851b8dbd38f3df9, type: 3}
   - {fileID: 8300000, guid: 8bc94ec6ed537e743b481638bdcd503d, type: 3}
+  m_FootstepSoundsWater:
+  - {fileID: 8300000, guid: a603a1d028417f9419c78a214950f851, type: 3}
   m_JumpSound: {fileID: 8300000, guid: 5897aeed9b676024fbb8c694b421a861, type: 3}
   m_LandSound: {fileID: 8300000, guid: 3b09d59f4499d45428baa7a21e954296, type: 3}
+  bool_water: 0
 --- !u!54 &561877334046886891
 Rigidbody:
   m_ObjectHideFlags: 0

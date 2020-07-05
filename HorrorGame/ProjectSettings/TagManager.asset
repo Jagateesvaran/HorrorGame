@@ -17,6 +17,7 @@ TagManager:
   - Throwable
   - collectible
   - walkPoints
+  - water
   layers:
   - Default
   - TransparentFX

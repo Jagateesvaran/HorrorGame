@@ -26,6 +26,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private LerpControlledBob m_JumpBob = new LerpControlledBob();
         [SerializeField] private float m_StepInterval;
         [SerializeField] private AudioClip[] m_FootstepSounds;    // an array of footstep sounds that will be randomly selected from.
+        [SerializeField] private AudioClip[] m_FootstepSoundsWater;    // an array of footstep sounds that will be randomly selected from.
         [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
 
@@ -42,6 +43,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
+
+        public bool bool_water = false;
+
 
         // Use this for initialization
         private void Start()
@@ -137,6 +141,24 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_MouseLook.UpdateCursorLock();
         }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.CompareTag("water"))
+            {
+                Debug.Log("In Water");
+                bool_water = true;
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.gameObject.CompareTag("water"))
+            {
+                Debug.Log("Out Water");
+                bool_water = false;
+            }
+        }
+
 
         private void PlayJumpSound()
         {
@@ -159,7 +181,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             m_NextStep = m_StepCycle + m_StepInterval;
 
-            PlayFootStepAudio();
+            if (!bool_water)
+            {
+                PlayFootStepAudio();
+            }
+            else
+            {
+                WaterPlayFootStepAudio();
+            }
         }
 
 
@@ -177,6 +206,22 @@ namespace UnityStandardAssets.Characters.FirstPerson
             // move picked sound to index 0 so it's not picked next time
             m_FootstepSounds[n] = m_FootstepSounds[0];
             m_FootstepSounds[0] = m_AudioSource.clip;
+        }
+
+        private void WaterPlayFootStepAudio()
+        {
+            if (!m_CharacterController.isGrounded)
+            {
+                return;
+            }
+            // pick & play a random footstep sound from the array,
+            // excluding sound at index 0
+            int n = Random.Range(0, m_FootstepSoundsWater.Length);
+            m_AudioSource.clip = m_FootstepSoundsWater[n];
+            m_AudioSource.PlayOneShot(m_AudioSource.clip);
+            // move picked sound to index 0 so it's not picked next time
+            m_FootstepSoundsWater[n] = m_FootstepSoundsWater[0];
+            m_FootstepSoundsWater[0] = m_AudioSource.clip;
         }
 
 
@@ -259,4 +304,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
         }
     }
+
+
 }
