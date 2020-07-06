@@ -14,7 +14,10 @@ public class AudioSpectrum : MonoBehaviour
 
     private void Update()
     {
-        // get the data
+        // Listen to all audio in game
+        //AudioListener.GetSpectrumData(m_audioSpectrum, 0, FFTWindow.Hamming);
+
+        // get audio from mic input only 
         source.GetSpectrumData(m_audioSpectrum, 0, FFTWindow.Hamming);
 
         // assign spectrum value
