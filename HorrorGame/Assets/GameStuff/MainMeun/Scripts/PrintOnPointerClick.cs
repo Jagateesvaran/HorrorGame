@@ -39,4 +39,13 @@ public class PrintOnPointerClick : MonoBehaviour
         animator.SetBool("Pressed", true);
         Application.Quit();
     }
+
+
+    public void MouseBackPressedInGame()
+    {
+        animator.SetBool("Pressed", true);
+        SettingsPanel.SetActive(false);
+    }
+
+
 }
