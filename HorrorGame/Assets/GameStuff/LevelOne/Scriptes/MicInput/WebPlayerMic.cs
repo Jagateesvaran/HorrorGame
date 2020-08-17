@@ -47,14 +47,13 @@ public class WebPlayerMic : MonoBehaviour {
 	{
 		amp = newValue;
 		amptxt.text = amp.ToString();
+		PlayerPrefs.SetFloat("MicSen", amp);
+
 	}
 
-	
-
-
 	IEnumerator Start () {
-
-		amp = 1;
+		amp = PlayerPrefs.GetFloat("MicSen");
+		amptxt.text = PlayerPrefs.GetFloat("MicSen", 1).ToString();
 
 		for (int i = 0; i < Microphone.devices.Length; i++)
 		{

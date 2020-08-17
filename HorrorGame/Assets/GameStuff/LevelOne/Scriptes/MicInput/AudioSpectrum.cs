@@ -8,8 +8,6 @@ using UnityEngine;
 /// </summary>
 public class AudioSpectrum : MonoBehaviour
 {
-
-
     public AudioSource source;
 
     private void Update()

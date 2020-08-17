@@ -2202,6 +2202,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1430783256}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &333647928 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 561877334049764523, guid: 258f14827e8f6114aa75585fde2762e4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1430783256}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &434743543
 GameObject:
   m_ObjectHideFlags: 0
@@ -4787,7 +4793,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 40ac59ca5e0694e42815cb0a8c7658c5, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.213
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5401,7 +5407,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1221304764
 Transform:
   m_ObjectHideFlags: 0
@@ -6209,7 +6215,7 @@ PrefabInstance:
     - target: {fileID: 57556539412694755, guid: 258f14827e8f6114aa75585fde2762e4,
         type: 3}
       propertyPath: m_Radius
-      value: 0.00001
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 57556539414793609, guid: 258f14827e8f6114aa75585fde2762e4,
         type: 3}
@@ -6290,6 +6296,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FPSController
+      objectReference: {fileID: 0}
+    - target: {fileID: 561877334055787851, guid: 258f14827e8f6114aa75585fde2762e4,
+        type: 3}
+      propertyPath: m_Height
+      value: 1.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 258f14827e8f6114aa75585fde2762e4, type: 3}
@@ -7962,7 +7973,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &2129679562
 Light:
   m_ObjectHideFlags: 0
@@ -9284,7 +9295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48250f0f5678f5c428cf1d604f26d243, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 333647928}
   playerHeard: 0
   TimeToSearch: 2
   Speed: 2

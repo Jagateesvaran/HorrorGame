@@ -1390,7 +1390,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &551173923
 Light:
   m_ObjectHideFlags: 0
@@ -6373,7 +6373,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -7321516171901871987, guid: c3c683f5af9306448b25ef8437909f6b, type: 3}
@@ -7842,10 +7842,40 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 909164781}
+    - target: {fileID: 8927492903141781228, guid: 91cb00f211656524981f621084b9a5cf,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8927492903141781228, guid: 91cb00f211656524981f621084b9a5cf,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8927492903141781228, guid: 91cb00f211656524981f621084b9a5cf,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8927492903446217976, guid: 91cb00f211656524981f621084b9a5cf,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8927492903446217976, guid: 91cb00f211656524981f621084b9a5cf,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8927492903768112032, guid: 91cb00f211656524981f621084b9a5cf,
         type: 3}
       propertyPath: m_Name
       value: SettingMeun
+      objectReference: {fileID: 0}
+    - target: {fileID: 8927492903768112032, guid: 91cb00f211656524981f621084b9a5cf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8927492903768112044, guid: 91cb00f211656524981f621084b9a5cf,
         type: 3}
